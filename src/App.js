@@ -1,0 +1,30 @@
+import "./App.css";
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import Home from "./Routes/Home";
+
+import Navbar from "./Component/Navbar";
+import Fotter from "./Component/Fotter"; // Fixed spelling
+import Type from "./Routes/Type";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Navbar />
+        {/* Main Content Area */}
+        <Routes>
+          {/* Set Home component as the default route */}
+          <Route index element={<Home />} />
+          <Route path="/type/:typeName" element={<Type />} />
+        </Routes>
+        <Fotter /> {/* Footer outside of the Switch block */}
+      </Router>
+    </div>
+  );
+}
+
+export default App;

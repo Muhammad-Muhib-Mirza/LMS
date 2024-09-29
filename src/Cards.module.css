@@ -1,0 +1,61 @@
+.subjectContainer{
+    display: flex;
+    float: right;
+}
+
+.subject{
+    font-size: 0.7rem;
+    background-color: blue;
+    padding: 2px 4px 2px 4px;
+    border-radius: 5px;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+    font-weight: bold;
+}
+
+.count{
+    font-size: 0.9rem;
+    background-color: blue;
+    color: white;
+    padding: 3px 6px 3px 6px;
+    border-radius: 6px;
+    margin-left: 0.2rem;
+}
+
+.math{
+    background-color: #A7DCDF;
+}
+.ss{
+    background-color: #B1C0C8;
+}
+.ela{
+    background-color: #FEE934;
+    width: 27.833px;
+    padding-left: 5.5px;
+}
+.sci{
+    background-color: #A3B379;
+    width: 27.833px;
+    padding-left: 5.5px;
+}
+
+.one{
+    background-color: #FAB231;
+}
+
+.two{
+    background-color: #DB2064;
+}
+
+.three{
+    background-color: #26814C;
+}
+
+.four{
+    background-color: #FAB231;
+}
+
+.five{
+    background-color: #3E8CC8;
+}
+
