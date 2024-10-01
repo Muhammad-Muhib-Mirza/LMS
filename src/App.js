@@ -9,6 +9,7 @@ import Navbar from "./Component/Navbar";
 import Fotter from "./Component/Fotter"; // Fixed spelling
 import Type from "./Routes/Type";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Details from "./Routes/detail"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           {/* Set Home component as the default route */}
           <Route index element={<Home />} />
           <Route path="/type/:typeName" element={<Type />} />
+          <Route path="/detail/:id" element={<Details />} />
         </Routes>
         <Fotter /> {/* Footer outside of the Switch block */}
       </Router>

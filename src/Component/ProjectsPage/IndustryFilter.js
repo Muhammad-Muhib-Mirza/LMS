@@ -1,21 +1,20 @@
+import { useState } from "react"
 import style from "../../Filter.module.css";
-import { useState } from "react";
 
-export default function SubjectFilter({ handleFilterChange }) {
-  const subjects = ['Math', 'Ela', 'Social Studies', 'Science'];
+export default function IndustryFilter({ handleFilterChange }) {
+  const subjects = ['Health Care', 'Agriculture','Technology'];
 
   // Define a color map for different background colors
   const colorMap = {
-    "Math": "#FFABAB",
-    "Ela": "#FF677D",
-    "Social Studies": "#6B4226",
-    "Science": "#392F5A"
+    "Health Care": "#FFABAB",
+    "Agriculture": "#FF677D",
+    "Technology": "#6B4226"
   };
 
   const [selectedFilters, setSelectedFilters] = useState([]);
 
   const handleItemClick = (filterValue) => {
-    handleFilterChange(filterValue,'Subject');
+    handleFilterChange(filterValue,'Industry');
     setSelectedFilters((prev) =>
       prev.includes(filterValue)
         ? prev.filter((f) => f !== filterValue) // Remove if already selected

@@ -2,6 +2,7 @@ import { useState } from "react";
 import style from "../../Cards.module.css";
 import Filter from "./Filter";
 import SubjectFilter from "./SubjectFilter";
+import IndustryFilter from "./IndustryFilter";
 
 export default function ProjectCards() {
   let data = [
@@ -9,95 +10,233 @@ export default function ProjectCards() {
       image: "/Card-Images/1727524311985.jpg",
       class: ["1", "2", "3", "4"],
       subject: ["Math", "Sci", "S.S"],
+      role: [
+        "Market Research",
+        "Business Analysis",
+        "Solution Design",
+        "Solution Development",
+        "Marketing & Sales",
+      ],
+      industry: ["Health Care", "Agriculture", "Technology"],
     },
     {
       image: "/Card-Images/1727524388090.jpg",
       class: ["1", "2"],
       subject: ["Math", "Sci"],
+      role: ["Market Research", "Business Analysis"],
+      industry: ["Health Care", "Agriculture"],
     },
     {
       image: "/Card-Images/1727524599284.jpg",
       class: ["2", "3"],
       subject: ["Math"],
+      role: ["Solution Design"],
+      industry: ["Health Care"],
     },
     {
       image: "/Card-Images/1727524696934.jpg",
       class: ["1"],
       subject: ["Math", "S.S"],
+      role: ["Market Research", "Marketing & Sales"],
+      industry: ["Agriculture"],
     },
     {
       image: "/Card-Images/1727524761887.jpg",
       class: ["1", "2"],
       subject: ["Math"],
+      role: ["Solution Design", "Solution Development"],
+      industry: ["Technology"],
     },
     {
       image: "/Card-Images/1727524857552.jpg",
       class: ["1"],
       subject: ["Math", "S.S"],
+      role: ["Marketing & Sales"],
+      industry: ["Health Care", "Technology"],
     },
     {
       image: "/Card-Images/1727524983003.jpg",
       class: ["1", "2", "3", "4"],
       subject: ["S.S"],
+      role: ["Business Analysis"],
+      industry: ["Agriculture", "Technology"],
     },
     {
       image: "/Card-Images/1727525069461.jpg",
       class: ["K", "1", "2", "3"],
       subject: ["Math"],
+      role: ["Solution Design"],
+      industry: ["Health Care", "Technology"],
     },
   ];
   const [allData, setAllData] = useState(data);
   const [cardData, setCardData] = useState(data);
   const [subjectfilter, setSubjectFilter] = useState([]);
+  const [industryFilter, setIndustryFilter] = useState([]);
+  const [roleFilter, setRoleFilter] = useState([]);
   const [selectedFilters, setSelectedFilters] = useState([]);
-  const handleFilterChange = (filterValue) => {
-    filterValue = filterValue == "Science" ? "Sci" : filterValue == "Social Studies" ? "S.S": filterValue //To match the filter Value with the value in state
-    setSelectedFilters((prevFilters) => {
-      //State to manage all the filter conditions
-      const updatedFilters = prevFilters.includes(filterValue)
-        ? prevFilters.filter((filter) => filter !== filterValue) // Remove filter if already selected
-        : [...prevFilters, filterValue]; // Add filter if not already selected
-  
-      let classFilters = []; // Variable for class filter
-      let subjectFilters = []; // Variable for subject filter
-      // Separate class and subject filters
-      updatedFilters.forEach((filter) => {
-        if (!isNaN(parseInt(filter)) || filter === "K") {
-          // Check if filter is a class (number or 'K')
-          classFilters.push(filter);
-        } else {
-          // Otherwise, it's a subject filter
-          subjectFilters.push(filter);
-        }
-      });
-  
-      // Filter the data based on class filters
-      let filteredData = allData;
-      if (classFilters.length > 0) {
-        filteredData = filteredData.filter((item) =>
-          classFilters.some((filter) => item.class.includes(filter))
-        );
-      }
-  
-      // Filter the data based on subject filters
-      if (subjectFilters.length > 0) {
-        filteredData = filteredData.filter((item) =>
-          subjectFilters.some((filter) => item.subject.includes(filter))
-        );
-      }
-  
-      // Set the filtered data to cardData state
-      setCardData(filteredData);
-  
-      return updatedFilters; // Return the updated filters
-    });
-  };
-  
+  const [classFilter, setClassFilter] = useState([]);
+  const handleFilterChange = (filterValue, filterFrom) => {
+    if (filterFrom == "Class") {
+      setClassFilter((prevFilters) => {
+        // Manage all the filter conditions
+        const updatedFilters = prevFilters.includes(filterValue)
+          ? prevFilters.filter((filter) => filter !== filterValue) // Remove filter if already selected
+          : [...prevFilters, filterValue]; // Add filter if not already selected
+        let filteredData = applyFilter(updatedFilters, filterFrom);
+        setCardData(filteredData);
 
+        return updatedFilters; // Return the updated filters
+      });
+    } else if (filterFrom == "Subject") {
+      // To match the filter value with the value in state
+      filterValue =
+        filterValue === "Science"
+          ? "Sci"
+          : filterValue === "Social Studies"
+          ? "S.S"
+          : filterValue;
+      setSubjectFilter((prevFilters) => {
+        // Manage all the filter conditions
+        const updatedFilters = prevFilters.includes(filterValue)
+          ? prevFilters.filter((filter) => filter !== filterValue) // Remove filter if already selected
+          : [...prevFilters, filterValue]; // Add filter if not already selected
+
+        // Variables for class, subject, industry, and role filters
+        let filteredData = applyFilter(updatedFilters, filterFrom);
+
+        // Set the filtered data to cardData state
+        setCardData(filteredData);
+
+        return updatedFilters; // Return the updated filters
+      });
+    } else if (filterFrom == "Industry") {
+      setIndustryFilter((prevFilters) => {
+        // Manage all the filter conditions
+        const updatedFilters = prevFilters.includes(filterValue)
+          ? prevFilters.filter((filter) => filter !== filterValue) // Remove filter if already selected
+          : [...prevFilters, filterValue]; // Add filter if not already selected
+
+        // Variables for class, subject, industry, and role filters
+        let filteredData = applyFilter(updatedFilters, filterFrom);
+        // Set the filtered data to cardData state
+        setCardData(filteredData);
+
+        return updatedFilters; // Return the updated filters
+      });
+    } else {
+      setRoleFilter((prevFilters) => {
+        // Manage all the filter conditions
+        const updatedFilters = prevFilters.includes(filterValue)
+          ? prevFilters.filter((filter) => filter !== filterValue) // Remove filter if already selected
+          : [...prevFilters, filterValue]; // Add filter if not already selected
+
+        // Variables for class, subject, industry, and role filters
+        let filteredData = applyFilter(updatedFilters, filterFrom);
+        // Set the filtered data to cardData state
+        setCardData(filteredData);
+
+        return updatedFilters; // Return the updated filters
+      });
+    }
+  };
+  const applyFilter = (updatedFilter, filterFrom) => {
+    let filteredData = allData;
+    if (filterFrom == "Class") {
+      if (updatedFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          updatedFilter.some((filter) => item.class.includes(filter))
+        );
+      }
+      if (subjectfilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          subjectfilter.some((filter) => item.subject.includes(filter))
+        );
+      }
+      if (industryFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          industryFilter.some((filter) => item.industry.includes(filter))
+        );
+      }
+      if (roleFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          roleFilter.some((filter) => item.role.includes(filter))
+        );
+      }
+      return filteredData;
+    } else if (filterFrom == "Subject") {
+      if (updatedFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          updatedFilter.some((filter) => item.subject.includes(filter))
+        );
+      }
+      if (classFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          classFilter.some((filter) => item.class.includes(filter))
+        );
+      }
+      if (industryFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          industryFilter.some((filter) => item.industry.includes(filter))
+        );
+      }
+      if (roleFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          roleFilter.some((filter) => item.role.includes(filter))
+        );
+      }
+      return filteredData;
+    } else if (filterFrom == "Industry") {
+      if (updatedFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          updatedFilter.some((filter) => item.industry.includes(filter))
+        );
+      }
+      if (subjectfilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          subjectfilter.some((filter) => item.subject.includes(filter))
+        );
+      }
+      if (classFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          classFilter.some((filter) => item.class.includes(filter))
+        );
+      }
+      if (roleFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          roleFilter.some((filter) => item.role.includes(filter))
+        );
+      }
+      return filteredData;
+    } else {
+      if (updatedFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          updatedFilter.some((filter) => item.role.includes(filter))
+        );
+      }
+      if (subjectfilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          subjectfilter.some((filter) => item.subject.includes(filter))
+        );
+      }
+      if (classFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          classFilter.some((filter) => item.class.includes(filter))
+        );
+      }
+      if (industryFilter.length > 0) {
+        filteredData = filteredData.filter((item) =>
+          industryFilter.some((filter) => item.industry.includes(filter))
+        );
+      }
+      return filteredData;
+    }
+  };
   return (
     <>
       <Filter handleFilterChange={handleFilterChange} />
       <SubjectFilter handleFilterChange={handleFilterChange} />
+      <IndustryFilter handleFilterChange={handleFilterChange} />
       <div
         style={{
           height: "auto",
@@ -112,12 +251,14 @@ export default function ProjectCards() {
           cardData.map((item) => {
             let i = 0;
             return (
-              <div
+              <a
+                href={`/detail/${i}`}
                 className="card mb-3"
                 style={{
                   height: "17rem",
                   marginLeft: "1.5rem",
                   width: "240px",
+                  cursor: "pointer",
                 }}
               >
                 <img
@@ -174,7 +315,7 @@ export default function ProjectCards() {
                     </span>
                   </p>
                 </div>
-              </div>
+              </a>
             );
           })
         ) : (

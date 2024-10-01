@@ -24,7 +24,7 @@ export default function Filter({ handleFilterChange }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
 
   const handleItemClick = (filterValue) => {
-    handleFilterChange(filterValue);
+    handleFilterChange(filterValue,'Class');
     setSelectedFilters((prev) =>
       prev.includes(filterValue) ? prev.filter((f) => f !== filterValue) : [...prev, filterValue] //If Same Filter Exists then Remove it from the selected State
     );
@@ -39,7 +39,7 @@ export default function Filter({ handleFilterChange }) {
           style={{
             backgroundColor: selectedFilters.includes(filterValue) ? colorMap[filterValue] : '#7B9DD4',
           }}
-          onClick={() => handleItemClick(filterValue)}
+          onClick={() => handleItemClick(filterValue,"Class")}
         >
           {filterValue}
         </div>
