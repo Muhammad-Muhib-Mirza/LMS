@@ -3,6 +3,7 @@ import style from "../../Cards.module.css";
 import Filter from "./Filter";
 import SubjectFilter from "./SubjectFilter";
 import IndustryFilter from "./IndustryFilter";
+import RoleFilter from "./RoleFilter";
 
 export default function ProjectCards() {
   let data = [
@@ -234,9 +235,13 @@ export default function ProjectCards() {
   };
   return (
     <>
-      <Filter handleFilterChange={handleFilterChange} />
+    <div style={{display:'flex',width:'90vw',margin:'auto',justifyContent:'space-evenly',marginTop:'2rem'}}>
+    <Filter handleFilterChange={handleFilterChange} />
       <SubjectFilter handleFilterChange={handleFilterChange} />
-      <IndustryFilter handleFilterChange={handleFilterChange} />
+      <IndustryFilter handleFilterChange={handleFilterChange} /> 
+      <RoleFilter handleFilterChange={handleFilterChange} />
+    </div>
+      
       <div
         style={{
           height: "auto",
@@ -321,7 +326,7 @@ export default function ProjectCards() {
         ) : (
           <div
             style={{
-              height: "50.5vh",
+              height: "53vh",
               width: "100%",
               display: "flex",
               alignItems: "center",

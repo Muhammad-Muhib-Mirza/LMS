@@ -3,23 +3,32 @@ import { motion } from "framer-motion";
 import style from "../../Filter.module.css";
 
 export default function IndustryFilter({ handleFilterChange }) {
-  const subjects = ["Health Care", "Agriculture", "Technology"];
+  const subjects = [
+    "Market Research",
+    "Business Analysis",
+    "Solution Design",
+    "Solution Development",
+    "Marketing & Sales",
+  ];
 
+  // Updated color map for roles
   const colorMap = {
-    "Health Care": "#FFABAB",
-    "Agriculture": "#FF677D",
-    "Technology": "#6B4226",
+    "Market Research": "#FFABAB",
+    "Business Analysis": "#FF677D",
+    "Solution Design": "#6B4226",
+    "Solution Development": "#392F5A",
+    "Marketing & Sales": "#61C0BF",
   };
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleItemClick = (filterValue) => {
-    handleFilterChange(filterValue, "Industry");
+    handleFilterChange(filterValue, "Role");
     setSelectedFilters((prev) =>
       prev.includes(filterValue)
-        ? prev.filter((f) => f !== filterValue)
-        : [...prev, filterValue]
+        ? prev.filter((f) => f !== filterValue) // Remove if already selected
+        : [...prev, filterValue] // Add filter if not selected
     );
   };
 
@@ -45,6 +54,7 @@ export default function IndustryFilter({ handleFilterChange }) {
 
   return (
     <>
+      {/* Toggle Button for the Role Filter */}
       <motion.button
         className={style.filterToggle}
         onClick={() => setIsOpen(!isOpen)}
@@ -55,9 +65,10 @@ export default function IndustryFilter({ handleFilterChange }) {
           marginBottom: "1rem",
           padding: "10px 20px",
           fontSize: "16px",
+          borderRadius: "5px",
         }}
       >
-        {isOpen ? "Hide Industry Filter" : "Show Industry Filter"}
+        {isOpen ? "Hide Role Filter" : "Show Role Filter"}
       </motion.button>
 
       {/* Bootstrap Modal Structure */}
@@ -69,7 +80,7 @@ export default function IndustryFilter({ handleFilterChange }) {
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title">Industry Filter</h5>
+                <h5 className="modal-title">Role Filter</h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -77,7 +88,13 @@ export default function IndustryFilter({ handleFilterChange }) {
                 ></button>
               </div>
               <div className="modal-body">
-                <div style={{ display: "flex", flexWrap: "wrap" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                  }}
+                >
                   {subjects.map((subject) => (
                     <motion.div
                       key={subject}
