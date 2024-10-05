@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import style from "../../Filter.module.css";
+import { useParams } from "react-router-dom";
 
 export default function Filter({ handleFilterChange }) {
+  const { typeName } = useParams(); // Get the search query from the URL
+
   const classes = [
     "K",
     "1",
@@ -18,6 +21,31 @@ export default function Filter({ handleFilterChange }) {
     "11",
     "12",
   ];
+
+  const [selectedFilters, setSelectedFilters] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(()=>{
+    if (typeName) {
+      if(classes.includes(typeName)){
+        console.log('typeName',typeName)
+        setSelectedFilters([typeName])
+        handleFilterChange(typeName, "Class");
+      }
+    }
+    const handleSearchQueryEvent = (event) => {
+      if(classes.includes(event.detail)){
+        setSelectedFilters([event.detail])
+        handleFilterChange(event.detail, "Class");
+      }
+    };
+
+    window.addEventListener("searchQueryEvent", handleSearchQueryEvent);
+
+    return () => {
+      window.removeEventListener("searchQueryEvent", handleSearchQueryEvent); // Clean up event listener
+    };
+  },[])
 
   const colorMap = {
     K: "#4defd6",
@@ -35,8 +63,7 @@ export default function Filter({ handleFilterChange }) {
     12: "#42d7d2",
   };
 
-  const [selectedFilters, setSelectedFilters] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
+  
 
   const handleItemClick = (filterValue) => {
     handleFilterChange(filterValue, "Class");

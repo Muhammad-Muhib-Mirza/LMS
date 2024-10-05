@@ -10,6 +10,7 @@ import Fotter from "./Component/Fotter"; // Fixed spelling
 import Type from "./Routes/Type";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Details from "./Routes/detail"
+import Login from "./Routes/login";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/type/:typeName" element={<Type />} />
           <Route path="/detail/:id" element={<Details />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Fotter /> {/* Footer outside of the Switch block */}
       </Router>

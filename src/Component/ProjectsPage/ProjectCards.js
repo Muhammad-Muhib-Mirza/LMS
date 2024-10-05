@@ -79,6 +79,7 @@ export default function ProjectCards() {
   const [classFilter, setClassFilter] = useState([]);
   const handleFilterChange = (filterValue, filterFrom) => {
     if (filterFrom == "Class") {
+      console.log("Filter Called")
       setClassFilter((prevFilters) => {
         // Manage all the filter conditions
         const updatedFilters = prevFilters.includes(filterValue)
