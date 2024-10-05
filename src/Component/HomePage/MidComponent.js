@@ -10,7 +10,7 @@ export default function MidComponent() {
       desc: "Creative Explorations",
     },
     {
-      image: "/RoundImages/option2.png",
+      image: "/RoundImages/option2.jpg",
       title: "Curious Mind",
       desc: "Critical thinking and bright ideas",
     },
