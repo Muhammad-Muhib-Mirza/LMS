@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import style from "../../Filter.module.css";
 import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Filter({ handleFilterChange }) {
   const { typeName } = useParams(); // Get the search query from the URL
+  const location = useLocation();
 
   const classes = [
     "K",
@@ -25,17 +27,19 @@ export default function Filter({ handleFilterChange }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
+    setSelectedFilters([]);
     if (typeName) {
-      if(classes.includes(typeName)){
-        console.log('typeName',typeName)
-        setSelectedFilters([typeName])
+      if (classes.includes(typeName)) {
+        console.log(location.state.searchValue);
+        console.log("typeName", typeName);
+        setSelectedFilters(typeName);
         handleFilterChange(typeName, "Class");
       }
     }
     const handleSearchQueryEvent = (event) => {
-      if(classes.includes(event.detail)){
-        setSelectedFilters([event.detail])
+      if (classes.includes(event.detail)) {
+        setSelectedFilters([event.detail]);
         handleFilterChange(event.detail, "Class");
       }
     };
@@ -45,7 +49,7 @@ export default function Filter({ handleFilterChange }) {
     return () => {
       window.removeEventListener("searchQueryEvent", handleSearchQueryEvent); // Clean up event listener
     };
-  },[])
+  }, []);
 
   const colorMap = {
     K: "#4defd6",
@@ -63,14 +67,13 @@ export default function Filter({ handleFilterChange }) {
     12: "#42d7d2",
   };
 
-  
-
   const handleItemClick = (filterValue) => {
     handleFilterChange(filterValue, "Class");
-    setSelectedFilters((prev) =>
-      prev.includes(filterValue)
-        ? prev.filter((f) => f !== filterValue)
-        : [...prev, filterValue] // If same filter exists, remove it from selected state
+    setSelectedFilters(
+      (prev) =>
+        prev.includes(filterValue)
+          ? prev.filter((f) => f !== filterValue)
+          : [...prev, filterValue] // If same filter exists, remove it from selected state
     );
   };
 

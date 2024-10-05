@@ -15,19 +15,21 @@ export default function Navbar() {
     if (searchQuery.trim() === "") {
       return; // Prevent empty searches
     }
-
+  
+    // Check if the current page includes "/type"
     if (window.location.pathname.includes("/type")) {
-      // We're already on the "/type" page, perform any search logic directly here
-      // This allows you to call a function from the "/type" component
+      // Dispatch the search event if already on the "/type" page
       const searchEvent = new CustomEvent("searchQueryEvent", {
         detail: searchQuery,
       });
-      window.dispatchEvent(searchEvent); // Dispatch a custom event with the search query
+      window.dispatchEvent(searchEvent); // Dispatch the custom event with the search query
     } else {
-      // Navigate to the "/type" route with the search query in the URL
-      navigate(`/type/${searchQuery}`);
+      // Navigate to the "/type" page and pass searchValue via state
+      navigate("/type/browselesson", { state: { searchValue: searchQuery } });
     }
   };
+  
+  
   return (
     <nav
       className="navbar"
@@ -39,7 +41,7 @@ export default function Navbar() {
           style={{ color: "white", fontWeight: "bold" }}
           href="/"
         >
-          NextLesson
+          <img src="/Logos/Navbarlogo.png" alt="" />
         </a>
         <form className="d-flex" role="search">
           <span

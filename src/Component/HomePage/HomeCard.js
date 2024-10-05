@@ -4,29 +4,29 @@ import { motion } from "framer-motion";
 export default function HomeCard() {
   let data = [
     {
-      title: "Perfomance Task",
+      title: "Hands On Learning",
       content:
-        "Engaging, standards-aligned math & ELA activities on topics students love. Students develop and apply critical thinking skills in authentic, real world scenarios using real data.",
+        "Opportunities to engage directly with concepts and ideas, project based learning like math’s activities and science experiments or participating in group discussions explore childrens  interests while applying what they have learned.",
     },
     {
-      title: "Projects",
+      title: "Interactive Experiences",
       content:
-        "Extended units designed to require deeper learning and in-depth inquiry while also incorporating student voice and choice, reflection and revision and student collaboration.",
+        "Explore child’s curiosity and motivation to learn with Interest based activities such as role playing, art creation, or outdoor explorations. By participating in interactive experiences, kids can enhance their learning through direct involvement in the world around them.",
     },
     {
-      title: "Activities",
+      title: "Creative projects",
       content:
-        "Ready-to-use interactive or printable lesson plans, which include all necessary resources, such as links, videos, documents and student/teacher notes.",
+        "Opportunities for kids to express their ideas and creativities. Creative projects to develop their skills in planning , organization and collaboration while bringing their ideas to life.",
     },
     {
-      title: "Rand & Reason",
+      title: "Collaborative Learning",
       content:
-        "Activities where students rank items in a list to answer a set question, which often does not have a right answer. Students are required to think critically to justify their rankings.",
+        "Teamwork and cooperation allowing children to work together on assigned projects and activities, fostering critical thinking, potential discussions and problem solving. students learn to share ideas and enhance their understandings leading to build sense of community for future enviornment where teamwork and collaboration are vital to success.",
     },
     {
-      title: "Skill Builder",
+      title: "Why It Matters",
       content:
-        "Skill Builders are short exercises where students focus on repeated practice of math & ELA skills. We offer five lines of skill builders, which incorporate real world and high interest topics.",
+        "Project based learning, Interactive activities, and Incorporating engagement task into education is crucial for kids motivation and interest for learning. These approaches helps students to prepare for real world challenges by bridging the gap between theoretical knowledge and practical application ultimately leading to increase love for learning.",
     },
   ];
   const [cardData, setCardData] = useState(data);
@@ -41,7 +41,7 @@ export default function HomeCard() {
               backgroundColor: "#D9EAF8",
               marginLeft: "2.5rem",
               marginTop: "2rem",
-              height: "14rem",
+              height: "20rem",
               textDecoration: "none",
               cursor: "pointer",
               boxShadow: "1px 1px 1px rgba(0,0,0,0.2)"
@@ -49,6 +49,11 @@ export default function HomeCard() {
             whileHover={{
               scale: 1.05,
               boxShadow: "2px 2px 2px rgba(0,0,0,0.2)",
+              rotate:-2
+            }}
+            transition={{
+              type:"spring",
+              duration:'0.5s'
             }}
           >
             <div className="card-body" style={{ padding: "0" }}>
