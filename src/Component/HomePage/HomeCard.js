@@ -4,6 +4,73 @@ import { motion } from "framer-motion";
 export default function HomeCard() {
   let data = [
     {
+      title: "Browser Industry Projects for Kids",
+    },
+    {
+      title: "Browse Projects to Prepare Future AI Roles",
+    },
+    {
+      title: "Browse Projects to Understand Curriculum Topics",
+    },
+    {
+      title: "Browse Projects By Grades",
+    },
+    {
+      title: "Browse All Projects",
+    },
+  ];
+  const [cardData, setCardData] = useState(data);
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "2rem" }}>
+      {cardData.map((item) => {
+        return (
+          <motion.a href={`/type/${item.title}`}
+            className="card"
+            style={{
+              width: "23rem",
+              backgroundColor: "#D9EAF8",
+              marginLeft: "2.5rem",
+              marginTop: "2rem",
+              height: "15rem",
+              textDecoration: "none",
+              cursor: "pointer",
+              boxShadow: "1px 1px 1px rgba(0,0,0,0.2)"
+            }}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "2px 2px 2px rgba(0,0,0,0.2)",
+              rotate:-1
+            }}
+            transition={{
+              type:"spring",
+              duration:'0.5s'
+            }}
+          >
+            <div className="card-body" style={{ padding: "0" }}>
+              <h5
+                style={{
+                  textAlign: "center",
+                  height: "3rem",
+                  paddingTop: "0.5rem",
+                  fontSize: "1.5rem",
+                  backgroundColor: "#B8D7F0",
+                }}
+              >
+              </h5>
+              <div style={{textAlign:'center',fontSize:'1.3rem',fontWeight:'700',width:'85%',margin:'auto',paddingTop:'2rem'}}>
+              {item.title}
+              </div>
+            </div>
+          </motion.a>
+        );
+      })}
+    </div>
+  );
+}
+
+/*
+let data = [
+    {
       title: "Hands On Learning",
       content:
         "Opportunities to engage directly with concepts and ideas, project based learning like math’s activities and science experiments or participating in group discussions explore childrens  interests while applying what they have learned.",
@@ -29,10 +96,10 @@ export default function HomeCard() {
         "Project based learning, Interactive activities, and Incorporating engagement task into education is crucial for kids motivation and interest for learning. These approaches helps students to prepare for real world challenges by bridging the gap between theoretical knowledge and practical application ultimately leading to increase love for learning.",
     },
   ];
-  const [cardData, setCardData] = useState(data);
-  return (
-    <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "2rem" }}>
-      {cardData.map((item) => {
+*/
+
+/*
+{cardData.map((item) => {
         return (
           <motion.a href={`/type/${item.title}`}
             className="card"
@@ -85,6 +152,4 @@ export default function HomeCard() {
           </motion.a>
         );
       })}
-    </div>
-  );
-}
+*/

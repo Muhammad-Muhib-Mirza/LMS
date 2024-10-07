@@ -5,25 +5,30 @@ import { motion } from "framer-motion";
 export default function MidComponent() {
   const data = [
     {
-      image: "/RoundImages/option1.jpg",
-      title: "Innovative learning",
-      desc: "Creative Explorations",
+      image: "/RoundImages/option1.jpeg",
+      title: "Career Counseling",
+      desc: "AI-driven career counseling aligns students' strengths.",
     },
     {
-      image: "/RoundImages/option2.jpg",
-      title: "Curious Mind",
-      desc: "Critical thinking and bright ideas",
+      image: "/RoundImages/option2.jpeg",
+      title: "Personalized Learning Paths",
+      desc: "Personalized AI learning paths adapt to students strengths and pace.",
     },
     {
-      image: "/RoundImages/option3.jpg",
-      title: "World wisdom",
-      desc: "Connecting lessons to everyday experiences",
+      image: "/RoundImages/option3.jpeg",
+      title: "Preparing for Future AI Roles",
+      desc: "Our Curriculum prepares students for exciting AI opportunities.",
     },
     {
-      image: "/RoundImages/option4.jpg",
-      title: "Unlocking passion",
-      desc: "Critical thinking and bright ideas",
+      image: "/RoundImages/option4.jpeg",
+      title: "Real-Life Learning Projects",
+      desc: "Hands-on projects bridge gap between theory.",
     },
+    {
+      image: "/RoundImages/option5.jpeg",
+      title: "Solve Industry Problems",
+      desc: "Developing career readiness through industry driven projects.",
+    }
   ];
   return (
     <div className={style.container} >
@@ -33,8 +38,8 @@ export default function MidComponent() {
             className={style.textContainer}
           >
             <img src={`${item.image}`} alt="" className={style.images} />
-            <h4 style={{marginTop:'0.5rem',textAlign:'center'}} >{item.title}</h4>
-            <p style={{textAlign:'center'}}>{item.desc}</p>
+            <h5 style={{marginTop:'0.5rem',textAlign:'center'}} >{item.title}</h5>
+            <p style={{textAlign:'center',width:'11rem'}}>{item.desc}</p>
           </div>
         );
       })}

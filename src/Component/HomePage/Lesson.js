@@ -1,9 +1,11 @@
+import {motion} from 'framer-motion'
+
 export default function Lesson() {
   return (
     <div
       style={{
         width: "100vw",
-        height: "82vh",
+        height: "100vh",
         backgroundColor:'#5FC6CD',
         display: "flex",
       }}
@@ -13,25 +15,17 @@ export default function Lesson() {
           height: "100%",
           width: "100%",
           margin: "auto",
-          backgroundImage: "url('/hero-image.jpeg')",
+          backgroundImage: "url('/Home/heroImage.png')",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover", 
           display:'flex',
           alignItems:'flex-end',
-          justifyContent:'center'
+          justifyContent:'center',
+          backgroundPosition:'center'
         }}
       >
-        <a href="/type/browselessons" style={{backgroundColor:'#E67500',padding:'8px 8px 8px 8px',cursor:'pointer',color:'white',fontWeight:'700',borderRadius:'5px',marginBottom:'4%',marginRight:'1rem'}} >Browse Lessons</a>
+        <motion.a href="/type/browselessons" style={{backgroundColor:'#E67500',padding:'8px 8px 8px 8px',cursor:'pointer',color:'white',fontWeight:'700',borderRadius:'5px',marginBottom:'4%',marginRight:'1rem',width:'10rem',textAlign:'center',boxShadow:'2px 2px 2px 2px rgba(0,0,0,0.5)'}} whileHover={{scale:1.1,boxShadow:'2px 2px 2px 2px rgba(255,255,255,0.3)'}} whileTap={{scale:0.8}} >Browse Lessons</motion.a>
       </div>
-      <div
-        style={{
-          height: "100%",
-          width: "20%",
-          backgroundImage: "url('/header-books-clock.png')",
-          backgroundPosition: "right bottom",
-          backgroundRepeat: "no-repeat", 
-        }}
-      ></div>
     </div>
   );
 }

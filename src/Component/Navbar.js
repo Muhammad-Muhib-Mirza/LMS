@@ -81,11 +81,14 @@ export default function Navbar() {
           />
           <button
             className="btn btn-outline-success"
-            type="submit"
             style={{
               backgroundColor: "#E67500",
               color: "whitesmoke",
               marginRight: "0.5rem",
+            }}
+            onClick={(e)=>{
+              e.preventDefault()
+              window.location.href = "/signup"
             }}
           >
             Sign Up
