@@ -21,7 +21,7 @@ export default function HomeCard() {
   ];
   const [cardData, setCardData] = useState(data);
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "2rem" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", marginBottom: "2rem",alignItems:'center',justifyContent:'center' }}>
       {cardData.map((item) => {
         return (
           <motion.a href={`/type/${item.title}`}

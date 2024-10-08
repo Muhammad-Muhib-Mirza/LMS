@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import style from '../SignUp.module.css'; // Assuming you have a CSS file for styles
-import { AnimatePresence } from 'framer-motion';
-import Test from '../Component/Test'
+import { AnimatePresence,motion } from 'framer-motion';
+import FormSubmition from '../Component/FormSubmition'
 
 function SignUpForm() {
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
   // Define state for the form fields
   const [formData, setFormData] = useState({
     userName: '',
@@ -113,7 +121,7 @@ function SignUpForm() {
     </AnimatePresence>
         <AnimatePresence>
 {
-  showAssesmentform && <div className={`${style.radioContainer}`} style={{ padding: '2rem', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
+  showAssesmentform && <motion.div variants={containerVariants} initial="hidden" animate="visible" className={`${style.radioContainer}`} style={{ padding: '2rem', borderRadius: '10px', backgroundColor: '#f9f9f9' }}>
     <div style={{position:'absolute',right:'16vw',fontSize:'1.2rem',color:'blue',cursor:'pointer',textDecoration:'underline'}} onClick={()=>{
       setShowAssesmentForm(false)
       setSuccessSubmit(true)
@@ -287,12 +295,12 @@ function SignUpForm() {
   >
     Submit
   </button>
-</div>
+</motion.div>
 }
         </AnimatePresence>
         <AnimatePresence>
           {
-            successSubmit && <Test />
+            successSubmit && <FormSubmition />
           }
         </AnimatePresence>
   </>
