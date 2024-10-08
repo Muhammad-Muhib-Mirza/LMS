@@ -1,5 +1,5 @@
 import Lesson from "../Component/HomePage/Lesson";
-import HomeCard from "../Component/HomePage/HomeCard";
+import ProjectCard from "../Component/ProjectsPage/ProjectCards";
 import MidComponent from "../Component/HomePage/MidComponent";
 
 export default function Home() {
@@ -7,10 +7,7 @@ export default function Home() {
     <>
       <Lesson />
       <MidComponent />
-      <h2 style={{ marginTop: "1rem", textAlign: "center" }}>
-        Browse Lessons by Type
-      </h2>
-      <HomeCard />
+      <ProjectCard />
     </>
   );
 }

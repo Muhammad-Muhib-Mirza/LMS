@@ -69,45 +69,13 @@ export default function SubjectFilter({ handleFilterChange }) {
 
   return (
     <>
-      {/* Toggle Button for the Subject Filter */}
-      <motion.button
-        className={style.filterToggle}
-        onClick={() => setIsOpen(!isOpen)}
-        initial={{ backgroundColor: "#3498db" }}
-        animate={{ backgroundColor: isOpen ? "#2980b9" : "#3498db" }}
-        transition={{ duration: 0.3 }}
-        style={{
-          marginBottom: "1rem",
-          padding: "10px 20px",
-          fontSize: "16px",
-          borderRadius: "10px",
-        }}
-      >
-        {isOpen ? "Hide Subject Filter" : "Show Subject Filter"}
-      </motion.button>
-
-      {/* Bootstrap Modal Structure */}
-      {isOpen && (
-        <div
-          className="modal fade show"
-          style={{ display: "block", backgroundColor: "rgba(0,0,0,0.5)" }}
-        >
-          <div className="modal-dialog modal-dialog-centered">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Subject Filter</h5>
-                <button
-                  type="button"
-                  className="btn-close"
-                  onClick={() => setIsOpen(false)}
-                ></button>
-              </div>
-              <div className="modal-body">
-                <div
+      <div
                   style={{
                     display: 'flex',
                     flexWrap: 'wrap',
-                    justifyContent: 'center',
+                    justifyContent: 'flex-start',
+                    width:'75vw',
+                    margin:'auto'
                   }}
                 >
                   {subjects.map((subject) => (
@@ -133,23 +101,6 @@ export default function SubjectFilter({ handleFilterChange }) {
                     </motion.div>
                   ))}
                 </div>
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-secondary"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Bootstrap modal-backdrop */}
-      {isOpen && <div className="modal-backdrop fade show"></div>}
     </>
   );
 }

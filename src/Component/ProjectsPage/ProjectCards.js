@@ -236,7 +236,7 @@ export default function ProjectCards() {
   };
   return (
     <>
-    <div style={{display:'flex',width:'90vw',margin:'auto',justifyContent:'space-evenly',marginTop:'2rem'}}>
+    <div style={{display:'flex',width:'90vw',margin:'auto',justifyContent:'space-evenly',marginTop:'2rem',flexDirection:'column'}}>
     <Filter handleFilterChange={handleFilterChange} />
       <SubjectFilter handleFilterChange={handleFilterChange} />
       <IndustryFilter handleFilterChange={handleFilterChange} /> 
@@ -251,6 +251,8 @@ export default function ProjectCards() {
           marginTop: "2rem",
           display: "flex",
           flexWrap: "wrap",
+          alignItems:'center',
+          justifyContent:'center'
         }}
       >
         {cardData.length > 0 ? ( // Show Cards Only If there is any data

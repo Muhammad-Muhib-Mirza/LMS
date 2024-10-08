@@ -5,7 +5,7 @@ export default function Lesson() {
     <div
       style={{
         width: "100vw",
-        height: "100vh",
+        height: "70vh",
         backgroundColor:'#5FC6CD',
         display: "flex",
       }}

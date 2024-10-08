@@ -24,6 +24,7 @@
   font-size: 18px;
   padding: 10px 20px;
   transition: all 0.3s ease;
+  margin-left: 1rem !important;
 }
 
 .filterBox:hover {
@@ -34,4 +35,16 @@
 .filterBox:active {
   transform: translateY(2px);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.industryBox{
+  width: 18.5rem;
+}
+
+.subjectBox{
+  width: 13.5rem;
+}
+
+.roleBox{
+  width: 10.5rem;
 }

@@ -30,17 +30,21 @@ export default function MidComponent() {
       desc: "Developing career readiness through industry driven projects.",
     }
   ];
+
   return (
-    <div className={style.container} >
-      {data.map((item,index) => {
+    <div className={style.container}>
+      {data.map((item, index) => {
         return (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
             className={style.textContainer}
           >
             <img src={`${item.image}`} alt="" className={style.images} />
-            <h5 style={{marginTop:'0.5rem',textAlign:'center'}} >{item.title}</h5>
-            <p style={{textAlign:'center',width:'11rem'}}>{item.desc}</p>
-          </div>
+            <h6 className={style.title}>{item.title}</h6>
+            <p className={style.desc}>{item.desc}</p>
+          </motion.div>
         );
       })}
     </div>

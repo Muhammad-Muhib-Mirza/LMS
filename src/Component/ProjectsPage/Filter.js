@@ -99,6 +99,38 @@ export default function Filter({ handleFilterChange }) {
 
   return (
     <>
+    <div style={{ display: "flex", flexWrap: "wrap",width:'75vw',margin:'auto' }}>
+                  {classes.map((filterValue) => (
+                    <motion.div
+                      key={filterValue}
+                      className={style.filterBox}
+                      style={{
+                        backgroundColor: selectedFilters.includes(filterValue)
+                          ? colorMap[filterValue]
+                          : "#7B9DD4",
+                        cursor: "pointer",
+                        margin: "5px",
+                        borderRadius: "8px",
+                        textAlign: "center",
+                        fontSize: "18px",
+                        padding: "10px 20px",
+                      }}
+                      onClick={() => handleItemClick(filterValue)}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      {filterValue}
+                    </motion.div>
+                  ))}
+                </div>
+    </>
+  );
+}
+
+
+
+/*
+<>
       <motion.button
         className={style.filterToggle}
         onClick={() => setIsOpen(!isOpen)}
@@ -115,7 +147,6 @@ export default function Filter({ handleFilterChange }) {
         {isOpen ? "Hide Class Filter" : "Show Class Filter"}
       </motion.button>
 
-      {/* Bootstrap Modal Structure */}
       {isOpen && (
         <div
           className="modal fade show"
@@ -171,8 +202,6 @@ export default function Filter({ handleFilterChange }) {
         </div>
       )}
 
-      {/* Bootstrap modal-backdrop */}
       {isOpen && <div className="modal-backdrop fade show"></div>}
-    </>
-  );
-}
+      </>
+*/
