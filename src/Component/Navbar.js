@@ -33,7 +33,7 @@ export default function Navbar() {
   return (
     <nav
       className="navbar"
-      style={{ padding: 0, backgroundColor: "#0072CE", height: "4rem" }}
+      style={{ padding: 0, backgroundColor: "#0072CE", height: "auto" }}
     >
       <div className="container-fluid">
         <a
@@ -65,7 +65,7 @@ export default function Navbar() {
             placeholder="Search Lesson Library"
             aria-label="Search"
             style={{
-              width: "55vw",
+              width: "50vw",
               border: "none",
               borderTopLeftRadius: "0",
               borderBottomLeftRadius: "0",
