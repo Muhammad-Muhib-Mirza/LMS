@@ -1,9 +1,6 @@
 import { useState } from "react";
 import style from "../../Cards.module.css";
-import Filter from "./Filter";
-import SubjectFilter from "./SubjectFilter";
-import IndustryFilter from "./IndustryFilter";
-import RoleFilter from "./RoleFilter";
+import TestFilter from "./FilterContainer"
 
 export default function ProjectCards() {
   let data = [
@@ -235,25 +232,14 @@ export default function ProjectCards() {
     }
   };
   return (
-    <>
-    <div style={{display:'flex',width:'90vw',margin:'auto',justifyContent:'space-evenly',marginTop:'2rem',flexDirection:'column'}}>
-    <Filter handleFilterChange={handleFilterChange} />
-      <SubjectFilter handleFilterChange={handleFilterChange} />
-      <IndustryFilter handleFilterChange={handleFilterChange} /> 
-      <RoleFilter handleFilterChange={handleFilterChange} />
+    <div className={style.container}>
+      
+    <div style={{width:'25vw'}}>
+    <TestFilter handleFilterChange={handleFilterChange} />
     </div>
       
       <div
-        style={{
-          height: "auto",
-          width: "85vw",
-          margin: "auto",
-          marginTop: "2rem",
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems:'center',
-          justifyContent:'center'
-        }}
+        className={style.projectContainer}
       >
         {cardData.length > 0 ? ( // Show Cards Only If there is any data
           cardData.map((item) => {
@@ -340,6 +326,6 @@ export default function ProjectCards() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

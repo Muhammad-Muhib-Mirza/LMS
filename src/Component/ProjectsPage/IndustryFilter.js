@@ -68,21 +68,16 @@ export default function IndustryFilter({ handleFilterChange }) {
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap",width:'75vw',margin:'auto',justifyContent:'flex-start' }}>
+      <div style={{ display: "flex", flexWrap: "wrap",width:'100%',margin:'auto',justifyContent:'flex-start' }}>
                   {subjects.map((subject) => (
                     <motion.div
                       key={subject}
-                      className={`${style.filterBox} ${style.industryBox}`}
+                      className={`${style.filterBox} ${style.subjectBox}`}
                       style={{
                         backgroundColor: selectedFilters.includes(subject)
                           ? colorMap[subject]
                           : "#7B9DD4",
-                        cursor: "pointer",
-                        margin: "5px",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        fontSize: "18px",
-                        padding: "10px 20px",
+                          color: selectedFilters.includes(subject) ? "white" : "black" 
                       }}
                       onClick={() => handleItemClick(subject)}
                       whileHover={{ scale: 1.1 }}

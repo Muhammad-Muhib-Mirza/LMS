@@ -5,7 +5,7 @@ import MidComponent from "../Component/HomePage/MidComponent";
 export default function Home() {
   return (
     <>
-      <Lesson />
+      {/* <Lesson /> */}
       <MidComponent />
       <ProjectCard />
     </>

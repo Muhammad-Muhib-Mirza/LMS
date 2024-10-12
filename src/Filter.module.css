@@ -21,10 +21,13 @@
   margin: 5px;
   border-radius: 8px;
   text-align: center;
-  font-size: 18px;
-  padding: 10px 20px;
+  font-size: 15px;
   transition: all 0.3s ease;
   margin-left: 1rem !important;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  padding-top: 0.2rem;
 }
 
 .filterBox:hover {
@@ -37,14 +40,15 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.industryBox{
-  width: 18.5rem;
-}
-
 .subjectBox{
-  width: 13.5rem;
+  width: 6.5rem;
+  font-size: 15px;
+  height: 2.2rem;
+  padding-top: 0.3rem;
 }
 
 .roleBox{
-  width: 10.5rem;
+  width: 6.5rem;
+  font-size: 15px;
+  height: 3.5rem;
 }

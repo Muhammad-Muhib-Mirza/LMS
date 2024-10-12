@@ -109,10 +109,9 @@ export default function detail() {
             numquam vitae suscipit necessitatibus!Lorem
           </div>
           <hr />
-          <Week />
-
         </div>
       </div>
+      <Week />
     </>
   );
 }

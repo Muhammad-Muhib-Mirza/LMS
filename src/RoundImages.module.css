@@ -3,8 +3,8 @@
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 2rem 0;
+    width: 95vw;
+    margin: auto;
   }
   
   .textContainer {

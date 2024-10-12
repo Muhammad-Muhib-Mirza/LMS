@@ -99,35 +99,35 @@ export default function Filter({ handleFilterChange }) {
 
   return (
     <>
-    <div style={{ display: "flex", flexWrap: "wrap",width:'75vw',margin:'auto' }}>
-                  {classes.map((filterValue) => (
-                    <motion.div
-                      key={filterValue}
-                      className={style.filterBox}
-                      style={{
-                        backgroundColor: selectedFilters.includes(filterValue)
-                          ? colorMap[filterValue]
-                          : "#7B9DD4",
-                        cursor: "pointer",
-                        margin: "5px",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        fontSize: "18px",
-                        padding: "10px 20px",
-                      }}
-                      onClick={() => handleItemClick(filterValue)}
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      {filterValue}
-                    </motion.div>
-                  ))}
-                </div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          width: "100%",
+          margin: "auto",
+        }}
+      >
+        {classes.map((filterValue) => (
+          <motion.div
+            key={filterValue}
+            className={style.filterBox}
+            style={{
+              backgroundColor: selectedFilters.includes(filterValue)
+                ? colorMap[filterValue]
+                : "#7B9DD4",
+              color: selectedFilters.includes(filterValue) ? "white" : "black",
+            }}
+            onClick={() => handleItemClick(filterValue)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {filterValue}
+          </motion.div>
+        ))}
+      </div>
     </>
   );
 }
-
-
 
 /*
 <>

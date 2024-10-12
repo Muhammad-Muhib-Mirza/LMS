@@ -74,8 +74,8 @@ export default function SubjectFilter({ handleFilterChange }) {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'flex-start',
-                    width:'75vw',
-                    margin:'auto'
+                    width:'100%',
+                    margin:'auto',
                   }}
                 >
                   {subjects.map((subject) => (
@@ -86,12 +86,7 @@ export default function SubjectFilter({ handleFilterChange }) {
                         backgroundColor: selectedFilters.includes(subject)
                           ? colorMap[subject]
                           : '#7B9DD4',
-                        cursor: 'pointer',
-                        margin: "5px",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        fontSize: "18px",
-                        padding: "10px 20px",
+                          color: selectedFilters.includes(subject) ? "white" : "black" 
                       }}
                       onClick={() => handleItemClick(subject)}
                       whileHover={{ scale: 1.1 }}

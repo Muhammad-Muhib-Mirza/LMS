@@ -82,7 +82,7 @@ export default function IndustryFilter({ handleFilterChange }) {
                     display: "flex",
                     flexWrap: "wrap",
                     justifyContent: 'flex-start',
-                    width:'75vw',
+                    width:'100%',
                     margin:'auto'
                   }}
                 >
@@ -94,12 +94,7 @@ export default function IndustryFilter({ handleFilterChange }) {
                         backgroundColor: selectedFilters.includes(subject)
                           ? colorMap[subject]
                           : "#7B9DD4",
-                        cursor: "pointer",
-                        margin: "5px",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        fontSize: "18px",
-                        padding: "10px 20px",
+                          color: selectedFilters.includes(subject) ? "white" : "black" 
                       }}
                       onClick={() => handleItemClick(subject)}
                       whileHover={{ scale: 1.1 }}
