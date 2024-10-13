@@ -76,15 +76,7 @@ export default function SubjectFilter({ handleFilterChange,reset }) {
   return (
     <>
       <div
-                  style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'flex-start',
-                    width:'100%',
-                    margin:'auto',
-                    height:'137px',
-                    overflowY:'auto'
-                  }}
+                  className={style.subjectContainer}
                 >
                   {subjects.map((subject) => (
                     <motion.div

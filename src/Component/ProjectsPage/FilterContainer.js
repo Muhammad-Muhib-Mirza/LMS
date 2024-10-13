@@ -174,7 +174,11 @@ const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
     <Box
       p={6}
       maxW="md"
-      
+      borderWidth={1}
+      borderRadius="lg"
+      boxShadow="lg"
+      bg="white"
+      mt={50}
     >
       <Flex direction="column" mb={6}>
         <Button

@@ -52,3 +52,19 @@
   font-size: 15px;
   height: 3.5rem;
 }
+
+.subjectContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  margin:auto;
+  height:137px;
+  overflow-y:auto;
+}
+
+@media screen and (max-width:800px) {
+  .subjectContainer{
+    width: 90%;
+  }
+}

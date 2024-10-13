@@ -73,8 +73,7 @@ export default function IndustryFilter({ handleFilterChange,reset }) {
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap",width:'100%',margin:'auto',justifyContent:'flex-start',height: '138px',
-          overflowY: 'auto' }}>
+      <div className={style.subjectContainer}>
                   {subjects.map((subject) => (
                     <motion.div
                       key={subject}
