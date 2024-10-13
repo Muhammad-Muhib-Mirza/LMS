@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import Filter from "./Filter";
+import style from '../../FilterContainer.module.css'
+import Filter from "./ClassFilter";
 import SubjectFilter from "./SubjectFilter";
 import IndustryFilter from "./IndustryFilter";
 import RoleFilter from "./RoleFilter";
+import { motion } from "framer-motion";
 import {
   Box,
   Flex,
-  Heading,
   Text,
   Button,
   Modal,
@@ -21,27 +22,28 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const FilterModal = ({ handleFilterChange }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [filter, setFilter] = useState({
-    jobTitles: "",
-    level: "",
-    function: "",
-    location: "",
-    industryAndKeywords: "",
-    construction: "",
-    railroadTransportation: "",
-    manufacturing: "",
-    companyName: "",
-    companyURL: "",
-    contactName: "",
-    employees: "",
-    revenue: "",
-  });
+const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
+  const { isOpen, onOpen, onClose } = useDisclosure() // From Chakra Ui
+  const [classDiv, setClassDiv] = useState(false);
+  const [subjectDiv, setSubjectDiv] = useState(false);
+  const [roleDiv, setRoleDiv] = useState(false);
+  const [industryDiv, setIndustryDiv] = useState(false);
+  const [reset,setReset] = useState(false);
 
-  const handleClearFilter = () => {};
+  const clearAllFilter = () => {
+    setReset(true)
+    handleClearFilter();
+    setTimeout(() => {
+      setReset(false)
+    }, 1000);
+  };
 
+  const animateVariant = {
+    hidden: { display: "none", opacity: 0 },
+    visible: { display: "flex", opacity: 1 },
+  };
   return (
+    <>
     <Box
       p={6}
       maxW="md"
@@ -49,67 +51,252 @@ const FilterModal = ({ handleFilterChange }) => {
       borderRadius="lg"
       boxShadow="lg"
       bg="white"
+      className={style.box}
     >
       <Flex direction="column" mb={6}>
-        <Heading size="lg" mb={4} color="teal.500">
-          Filters
-        </Heading>
         <Button
           colorScheme="red"
           variant="outline"
           size="sm"
-          onClick={handleClearFilter}
+          onClick={clearAllFilter}
         >
-          Clear (1)
+          Reset
         </Button>
       </Flex>
 
       <Flex direction="column" gap={4}>
         <Text
           fontWeight="medium"
-          style={{ fontSize: "1.3rem" }}
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
           size="lg"
           mb={1}
           color="teal.500"
+          onClick={() => setClassDiv(!classDiv)}
         >
-          Class
+          Search By Class{" "}
+          <span style={{ fontSize: "1.1rem" }}>{classDiv ? "▲" : "▼"}</span>
         </Text>
-        <Filter handleFilterChange={handleFilterChange} />
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={classDiv ? "visible" : "hidden"}
+          transition={{
+            duration: classDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <Filter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
 
         <Text
           fontWeight="medium"
-          style={{ fontSize: "1.3rem" }}
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
           size="lg"
           mb={1}
           color="teal.500"
+          onClick={() => setSubjectDiv(!subjectDiv)}
         >
-          Subject
+          Search By Subject{" "}
+          <span style={{ fontSize: "1.1rem" }}>{subjectDiv ? "▲" : "▼"}</span>
         </Text>
-        <SubjectFilter handleFilterChange={handleFilterChange} />
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={subjectDiv ? "visible" : "hidden"}
+          transition={{
+            duration: subjectDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <SubjectFilter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
 
         <Text
           fontWeight="medium"
-          style={{ fontSize: "1.3rem" }}
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
           size="lg"
           mb={1}
           color="teal.500"
+          onClick={() => setIndustryDiv(!industryDiv)}
         >
-          Industry
+          Search By Industry{" "}
+          <span style={{ fontSize: "1.1rem" }}>{industryDiv ? "▲" : "▼"}</span>
         </Text>
-        <IndustryFilter handleFilterChange={handleFilterChange} />
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={industryDiv ? "visible" : "hidden"}
+          transition={{
+            duration: industryDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <IndustryFilter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
 
         <Text
           fontWeight="medium"
-          style={{ fontSize: "1.3rem" }}
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
           size="lg"
           mb={1}
           color="teal.500"
+          onClick={() => {
+            setRoleDiv(!roleDiv);
+          }}
         >
-          Role
+          Search By Role{" "}
+          <span style={{ fontSize: "1.1rem" }}>{roleDiv ? "▲" : "▼"}</span>
         </Text>
-        <RoleFilter handleFilterChange={handleFilterChange} />
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={roleDiv ? "visible" : "hidden"}
+          transition={{
+            duration: roleDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <RoleFilter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
       </Flex>
     </Box>
+    <div className={style.mobileContainer}>
+    <Button onClick={onOpen}>Apply Search Filter</Button>
+    <Modal isOpen={isOpen} onClose={onClose}>
+    <ModalOverlay />
+    <ModalContent>
+    <ModalCloseButton />
+    <ModalBody>
+    <Box
+      p={6}
+      maxW="md"
+      
+    >
+      <Flex direction="column" mb={6}>
+        <Button
+          colorScheme="red"
+          variant="outline"
+          size="sm"
+          onClick={clearAllFilter}
+        >
+          Reset
+        </Button>
+      </Flex>
+
+      <Flex direction="column" gap={4}>
+        <Text
+          fontWeight="medium"
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
+          size="lg"
+          mb={1}
+          color="teal.500"
+          onClick={() => setClassDiv(!classDiv)}
+        >
+          Search By Class{" "}
+          <span style={{ fontSize: "1.1rem" }}>{classDiv ? "▲" : "▼"}</span>
+        </Text>
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={classDiv ? "visible" : "hidden"}
+          transition={{
+            duration: classDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <Filter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
+
+        <Text
+          fontWeight="medium"
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
+          size="lg"
+          mb={1}
+          color="teal.500"
+          onClick={() => setSubjectDiv(!subjectDiv)}
+        >
+          Search By Subject{" "}
+          <span style={{ fontSize: "1.1rem" }}>{subjectDiv ? "▲" : "▼"}</span>
+        </Text>
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={subjectDiv ? "visible" : "hidden"}
+          transition={{
+            duration: subjectDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <SubjectFilter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
+
+        <Text
+          fontWeight="medium"
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
+          size="lg"
+          mb={1}
+          color="teal.500"
+          onClick={() => setIndustryDiv(!industryDiv)}
+        >
+          Search By Industry{" "}
+          <span style={{ fontSize: "1.1rem" }}>{industryDiv ? "▲" : "▼"}</span>
+        </Text>
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={industryDiv ? "visible" : "hidden"}
+          transition={{
+            duration: industryDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <IndustryFilter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
+
+        <Text
+          fontWeight="medium"
+          style={{ fontSize: "1.3rem", cursor: "pointer", userSelect: "none" }}
+          size="lg"
+          mb={1}
+          color="teal.500"
+          onClick={() => {
+            setRoleDiv(!roleDiv);
+          }}
+        >
+          Search By Role{" "}
+          <span style={{ fontSize: "1.1rem" }}>{roleDiv ? "▲" : "▼"}</span>
+        </Text>
+        <motion.div
+          variants={animateVariant}
+          initial="hidden"
+          animate={roleDiv ? "visible" : "hidden"}
+          transition={{
+            duration: roleDiv ? 0.4 : 0.2,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+        >
+          <RoleFilter handleFilterChange={handleFilterChange} reset={reset} />
+        </motion.div>
+      </Flex>
+    </Box>
+    </ModalBody>
+    <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+    </ModalContent>
+    </Modal>
+    </div>
+    </>
   );
 };
 

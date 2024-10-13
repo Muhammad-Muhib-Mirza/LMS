@@ -72,7 +72,6 @@ export default function ProjectCards() {
   const [subjectfilter, setSubjectFilter] = useState([]);
   const [industryFilter, setIndustryFilter] = useState([]);
   const [roleFilter, setRoleFilter] = useState([]);
-  const [selectedFilters, setSelectedFilters] = useState([]);
   const [classFilter, setClassFilter] = useState([]);
   const handleFilterChange = (filterValue, filterFrom) => {
     if (filterFrom == "Class") {
@@ -231,11 +230,19 @@ export default function ProjectCards() {
       return filteredData;
     }
   };
+
+  const handleClearFilter = ()=>{
+    setClassFilter([])
+    setIndustryFilter([])
+    setSubjectFilter([])
+    setRoleFilter([])
+    setCardData(allData)
+  }
   return (
     <div className={style.container}>
       
-    <div style={{width:'25vw'}}>
-    <TestFilter handleFilterChange={handleFilterChange} />
+    <div className={style.filterContainer} >
+    <TestFilter handleFilterChange={handleFilterChange} handleClearFilter={handleClearFilter} />
     </div>
       
       <div

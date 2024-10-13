@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import style from "../../Filter.module.css";
 import { useParams } from "react-router-dom";
 
-export default function IndustryFilter({ handleFilterChange }) {
+export default function IndustryFilter({ handleFilterChange,reset }) {
   const { typeName } = useParams(); // Get the search query from the URL
   const subjects = [
     "Market Research",
@@ -25,6 +25,11 @@ export default function IndustryFilter({ handleFilterChange }) {
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(()=>{
+    if(reset){
+      setSelectedFilters([])
+    }
+  },[reset])
   useEffect(()=>{
     if (typeName) {
       if(subjects.includes(typeName)){
@@ -83,7 +88,9 @@ export default function IndustryFilter({ handleFilterChange }) {
                     flexWrap: "wrap",
                     justifyContent: 'flex-start',
                     width:'100%',
-                    margin:'auto'
+                    margin:'auto',
+                    height:'200px',
+          overflowY: 'auto'
                   }}
                 >
                   {subjects.map((subject) => (

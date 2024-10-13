@@ -3,20 +3,26 @@ import { motion } from "framer-motion";
 import style from "../../Filter.module.css";
 import { useParams } from "react-router-dom";
 
-export default function SubjectFilter({ handleFilterChange }) {
+export default function SubjectFilter({ handleFilterChange,reset }) {
   const { typeName } = useParams(); // Get the search query from the URL
-  const subjects = ['Math', 'Ela', 'Social Studies', 'Science'];
+  const subjects = ['Math', 'Ela', 'Social Studies', 'Science','Physics'];
 
   const colorMap = {
     "Math": "#FFABAB",
     "Ela": "#FF677D",
     "Social Studies": "#6B4226",
     "Science": "#392F5A",
+    "Physics" : "#DB2064"
   };
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(()=>{
+    if(reset){
+      setSelectedFilters([])
+    }
+  },[reset])
   useEffect(()=>{
     if (typeName) {
       if(subjects.includes(typeName)){
@@ -76,6 +82,8 @@ export default function SubjectFilter({ handleFilterChange }) {
                     justifyContent: 'flex-start',
                     width:'100%',
                     margin:'auto',
+                    height:'137px',
+                    overflowY:'auto'
                   }}
                 >
                   {subjects.map((subject) => (
