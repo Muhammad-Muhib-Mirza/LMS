@@ -106,14 +106,7 @@ useEffect(()=>{
   return (
     <>
       <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          width: "100%",
-          margin: "auto",
-          height: '168px',
-          overflowY: 'auto'
-        }}
+        className={style.classContainer}
       >
         {classes.map((filterValue) => (
           <motion.div

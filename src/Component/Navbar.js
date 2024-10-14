@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import style from "../Navbar.module.css";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -35,7 +36,7 @@ export default function Navbar() {
       className="navbar"
       style={{ padding: 0, backgroundColor: "#0072CE", height: "auto" }}
     >
-      <div className="container-fluid">
+      <div className={`container-fluid ${style.navContainer}`} >
         <a
           className="navbar-brand"
           style={{ color: "white", fontWeight: "bold" }}
@@ -43,9 +44,9 @@ export default function Navbar() {
         >
           <img src="/Logos/Navbarlogo.png" alt="" />
         </a>
-        <form className="d-flex" role="search">
+        <form className={`d-flex ${style.searchForm}`} role="search">
           <span
-            className="input-group-text"
+            className={`input-group-text ${style.searchIcon}`}
             id="basic-addon1"
             style={{
               boxShadow: "2px 2px 2px rgba(0,0,0,0.2)",
@@ -57,22 +58,13 @@ export default function Navbar() {
               color: "white",
             }}
           >
-            <i className="bi bi-search" onClick={handleSearch}></i>
+            <i className={`bi bi-search `} onClick={handleSearch}></i>
           </span>
           <input
-            className="form-control me-2 navsearch"
+            className={`form-control me-2 navsearch ${style.navSearch}`}
             type="search"
             placeholder="Search Lesson Library"
             aria-label="Search"
-            style={{
-              width: "50vw",
-              border: "none",
-              borderTopLeftRadius: "0",
-              borderBottomLeftRadius: "0",
-              backgroundColor: "#0069AB",
-              boxShadow: "2px 2px 2px rgba(0,0,0,0.2)",
-              color: "white",
-            }}
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -80,7 +72,7 @@ export default function Navbar() {
             onKeyDown={handleKeyDown}
           />
           <button
-            className="btn btn-outline-success"
+            className={`btn btn-outline-success ${style.formBtn}`}
             style={{
               backgroundColor: "#E67500",
               color: "whitesmoke",

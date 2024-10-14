@@ -83,15 +83,7 @@ export default function IndustryFilter({ handleFilterChange,reset }) {
   return (
     <>
       <div
-                  style={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    justifyContent: 'flex-start',
-                    width:'100%',
-                    margin:'auto',
-                    height:'200px',
-          overflowY: 'auto'
-                  }}
+                  className={style.roleContainer}
                 >
                   {subjects.map((subject) => (
                     <motion.div

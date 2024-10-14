@@ -243,6 +243,7 @@ export default function ProjectCards() {
       
     <div className={style.filterContainer} >
     <TestFilter handleFilterChange={handleFilterChange} handleClearFilter={handleClearFilter} />
+    <div style={{position:'absolute',right:'1rem',textDecoration:'underline',color:'blue'}} onClick={()=>window.location.href='/assesme'} >Asses Me</div>
     </div>
       
       <div
