@@ -1,97 +1,108 @@
-.container{
-    display:flex;
-    width: 95vw;
-    gap:2rem;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    justify-content: space-between;
+.container {
+  display: flex;
+  width: 95vw;
+  gap: 2rem;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  justify-content: space-between;
 }
 
-.projectContainer{
-    height: auto;
-    width: 68%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0;
+.projectContainer {
+  height: auto;
+  width: 68%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
 }
 
-.subjectContainer{
-    display: flex;
-    float: right;
+.subjectContainer {
+  display: flex;
+  float: right;
 }
 
-.subject{
-    font-size: 0.7rem;
-    background-color: blue;
-    padding: 2px 4px 2px 4px;
-    border-radius: 5px;
-    margin-left: 0.2rem;
-    margin-top: 0.2rem;
-    font-weight: bold;
+.subject {
+  font-size: 0.7rem;
+  background-color: blue;
+  padding: 2px 4px 2px 4px;
+  border-radius: 5px;
+  margin-left: 0.2rem;
+  margin-top: 0.2rem;
+  font-weight: bold;
 }
 
-.count{
-    font-size: 0.9rem;
-    background-color: blue;
-    color: white;
-    padding: 3px 6px 3px 6px;
-    border-radius: 6px;
-    margin-left: 0.2rem;
+.count {
+  font-size: 0.9rem;
+  background-color: blue;
+  color: white;
+  padding: 3px 6px 3px 6px;
+  border-radius: 6px;
+  margin-left: 0.2rem;
 }
 
-.math{
-    background-color: #A7DCDF;
+.math {
+  background-color: #a7dcdf;
 }
-.ss{
-    background-color: #B1C0C8;
+.ss {
+  background-color: #b1c0c8;
 }
-.ela{
-    background-color: #FEE934;
-    width: 27.833px;
-    padding-left: 5.5px;
+.ela {
+  background-color: #fee934;
+  width: 27.833px;
+  padding-left: 5.5px;
 }
-.sci{
-    background-color: #A3B379;
-    width: 27.833px;
-    padding-left: 5.5px;
-}
-
-.one{
-    background-color: #FAB231;
+.sci {
+  background-color: #a3b379;
+  width: 27.833px;
+  padding-left: 5.5px;
 }
 
-.two{
-    background-color: #DB2064;
+.one {
+  background-color: #fab231;
 }
 
-.three{
-    background-color: #26814C;
+.two {
+  background-color: #db2064;
 }
 
-.four{
-    background-color: #FAB231;
+.three {
+  background-color: #26814c;
 }
 
-.five{
-    background-color: #3E8CC8;
+.four {
+  background-color: #fab231;
 }
 
-.filterContainer{
-    width: 25%;
-    display: flex;
+.five {
+  background-color: #3e8cc8;
+}
+
+.filterContainer {
+  width: 25%;
+  display: flex;
+}
+
+.AssesMe {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 100vw;
+    flex-direction: column;
     align-items: center;
-}
-
-@media screen and (max-width:800px) {
-    .container{
-        width: 100vw;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }   
-    .filterContainer{
-        width: auto;
-    }
+    justify-content: center;
+  }
+  .filterContainer {
+    width: auto;
+  }
+  .AssesMe {
+    position: absolute;
+    right: 1rem;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    display: block;
+  }
 }
