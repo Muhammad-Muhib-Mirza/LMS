@@ -3,6 +3,7 @@ import style from "../../SignUp.module.css"; // Assuming you have a CSS file for
 import style2 from "../../AssesMe.module.css";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function AssesMe({
   setFormData,
@@ -10,6 +11,7 @@ export default function AssesMe({
   setShowAssesmentForm,
   setSuccessSubmit,
 }) {
+  const location = useLocation();
   const [loading, setLoading] = useState(false);
   const containerVariants = {
     hidden: { opacity: 0, scale: 0 },
@@ -31,15 +33,18 @@ export default function AssesMe({
         backgroundColor: "#f9f9f9",
       }}
     >
-      <div
-        className={style.skipBtn}
-        onClick={() => {
-          setShowAssesmentForm(false);
-          setSuccessSubmit(true);
-        }}
-      >
-        Skip
-      </div>
+      {location.pathname.includes("signup") && (
+        <div
+          className={style.skipBtn}
+          onClick={() => {
+            setShowAssesmentForm(false);
+            setSuccessSubmit(true);
+          }}
+        >
+          Skip
+        </div>
+      )}
+
       <h4 style={{ borderBottom: "1px solid black", paddingBottom: "0.5rem" }}>
         Select Your Personality Type
       </h4>
@@ -67,9 +72,7 @@ export default function AssesMe({
             alignItems: "center",
           }}
         >
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -105,9 +108,7 @@ export default function AssesMe({
               />
             </span>
           </div>
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -169,9 +170,7 @@ export default function AssesMe({
             alignItems: "center",
           }}
         >
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -207,9 +206,7 @@ export default function AssesMe({
               />
             </span>
           </div>
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -271,9 +268,7 @@ export default function AssesMe({
             alignItems: "center",
           }}
         >
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -308,9 +303,7 @@ export default function AssesMe({
               />
             </span>
           </div>
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -365,9 +358,7 @@ export default function AssesMe({
             alignItems: "center",
           }}
         >
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"
@@ -402,9 +393,7 @@ export default function AssesMe({
               />
             </span>
           </div>
-          <div
-            className={`form-check ${style.choiceContainer}`}
-          >
+          <div className={`form-check ${style.choiceContainer}`}>
             <input
               className={`form-check-input ${style2.radioBtn}`}
               type="radio"

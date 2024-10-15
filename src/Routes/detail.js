@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Week from "../Component/DetailPage/Week";
+import style from "../Detail.module.css";
 
 export default function detail() {
   let data = [
@@ -49,12 +50,7 @@ export default function detail() {
   return (
     <>
       <div
-        style={{
-          width: "90vw",
-          display: "flex",
-          margin: "auto",
-          marginTop: "2rem",
-        }}
+        className={style.container}
       >
         <div style={{ display: "flex", flexDirection: "column" }}>
           <img
@@ -62,7 +58,7 @@ export default function detail() {
             alt=""
             style={{ width: "20rem" }}
           />
-          <div>Math</div>
+          <div className={style.tagContainer} >Math</div>
         </div>
         <div
           style={{
@@ -99,7 +95,7 @@ export default function detail() {
             <hr />
           </div>
           <h3>Objectives</h3>
-          <div style={{ width: "30rem", marginTop: "0.5rem" }}>
+          <div className={style.headObjective}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             soluta beatae unde, pariatur expedita, sed dolorem in eveniet fuga
             similique, eius libero! Quas nobis et laudantium iure maxime nihil
