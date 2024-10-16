@@ -16,6 +16,10 @@
     overflow-y: auto;
 }
 
+.imageContainer{
+    display: flex; flex-direction: column;
+}
+
 @media screen and (max-width:800px) {
     .container{
         flex-direction: column;
@@ -26,5 +30,8 @@
     }
     .tagContainer{
         height: 7rem;
+    }
+    .imageContainer{
+        margin-left: 2rem;
     }
 }

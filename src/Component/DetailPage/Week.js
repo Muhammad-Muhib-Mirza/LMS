@@ -51,7 +51,7 @@ export default function Week() {
         onMouseOver={(e) => (e.target.style.backgroundColor = "#2980B9")}
         onMouseOut={(e) => (e.target.style.backgroundColor = "#3498DB")}
       >
-        Week {weekItem.id} {activeIndex === weekIndex ? "◀" : "▶"}
+        Week {weekItem.id} ▶
       </button>
       <motion.div
         // initial={{ opacity: 0, display: "none" }}
@@ -138,7 +138,7 @@ export default function Week() {
         onMouseOver={(e) => (e.target.style.backgroundColor = "#2980B9")}
         onMouseOut={(e) => (e.target.style.backgroundColor = "#3498DB")}
       >
-        Week {weekItem.id} {activeIndex === weekIndex ? "◀" : "▶"}
+        Week {weekItem.id} {activeIndex === weekIndex ? "▲" : "▼"}
       </button>
       <motion.div
         initial={{ opacity: 0, display: "none" }}

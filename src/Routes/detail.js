@@ -52,7 +52,7 @@ export default function detail() {
       <div
         className={style.container}
       >
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className={style.imageContainer}>
           <img
             src="/Card-Images/criticalthinking.png"
             alt=""
