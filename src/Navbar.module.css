@@ -26,4 +26,7 @@
       width: 4.5rem;
       font-size: small;
     }
+    .navSearch {
+      width: 40vw;
+    }
 }
