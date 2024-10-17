@@ -100,11 +100,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/Extra.jpg"
                 alt="Extrovert"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
-                className={style.personPic}
+                className={`${style.personPic} ${style2.image}`}
               />
             </span>
           </div>
@@ -137,10 +133,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/In.jpg"
                 alt="Introvert"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>
@@ -199,10 +192,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/Se.png"
                 alt="Sensing"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>
@@ -235,10 +225,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/iNt.png"
                 alt="Intuition"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>
@@ -296,10 +283,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/Think.jpg"
                 alt="Sensing"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>
@@ -331,10 +315,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/Feel.jpg"
                 alt="Intuition"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>
@@ -386,10 +367,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/Think.jpg"
                 alt="Sensing"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>
@@ -421,10 +399,7 @@ export default function AssesMe({
               <img
                 src="/RadioImages/Per.jpg"
                 alt="Intuition"
-                style={{
-                  borderRadius: "5px",
-                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.1)",
-                }}
+                className={style2.image}
               />
             </span>
           </div>

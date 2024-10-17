@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { motion } from "framer-motion";
 import style from "../../Filter.module.css";
 import { useParams } from "react-router-dom";
@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 export default function Filter({ handleFilterChange,reset }) {
   const { typeName } = useParams(); // Get the search query from the URL
   const location = useLocation();
-
   const classes = [
     "K",
     "1",
@@ -26,7 +25,6 @@ export default function Filter({ handleFilterChange,reset }) {
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-
 useEffect(()=>{
   if(reset){
     setSelectedFilters([])
