@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {motion} from "framer-motion"
-import style from "../../Week.module.css"
+import style from "../../Style/Week.module.css"
 
 export default function Week() {
     const [activeIndex, setActiveIndex] = useState(null); // Track the currently active div

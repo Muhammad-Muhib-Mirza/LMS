@@ -1,5 +1,5 @@
 import { useState } from "react";
-import style from "../../RoundImages.module.css";
+import style from "../../Style/RoundImages.module.css";
 import { motion } from "framer-motion";
 
 export default function MidComponent() {

@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Week from "../Component/DetailPage/Week";
-import style from "../Detail.module.css";
+import style from "../Style/Detail.module.css";
+import axios from "axios";
 
 export default function detail() {
+  // const [data,setData] = useState();
+  // useEffect(()=>{
+  //   axios.get("").then((result)=>{
+  //     console.log(result)
+  //   }).catch((err)=>{
+  //     console.log(err)
+  //   })
+  // },[])
   let data = [
     {
       image: "/Card-Images/1727524311985.jpg",

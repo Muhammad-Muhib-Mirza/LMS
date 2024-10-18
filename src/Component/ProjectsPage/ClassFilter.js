@@ -1,10 +1,10 @@
 import { useState, useEffect,useRef } from "react";
 import { motion } from "framer-motion";
-import style from "../../Filter.module.css";
+import style from "../../Style/Filter.module.css";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-export default function Filter({ handleFilterChange,reset }) {
+export default function Filter({ handleFilterChange,reset,classFilter }) {
   const { typeName } = useParams(); // Get the search query from the URL
   const location = useLocation();
   const classes = [
@@ -31,31 +31,12 @@ useEffect(()=>{
   }
 },[reset])
 
-  useEffect(() => {
-    setSelectedFilters([]);
-    if (typeName) {
-      if (classes.includes(typeName)) {
-        console.log(location.state.searchValue);
-        console.log("typeName", typeName);
-        setSelectedFilters(typeName);
-        handleFilterChange(typeName, "Class");
-      }
-    }
-    const handleSearchQueryEvent = (event) => {
-      if (classes.includes(event.detail)) {
-        setSelectedFilters([event.detail]);
-        handleFilterChange(event.detail, "Class");
-      }
-    };
-
-    window.addEventListener("searchQueryEvent", handleSearchQueryEvent);
-
-    return () => {
-      window.removeEventListener("searchQueryEvent", handleSearchQueryEvent); // Clean up event listener
-    };
-  }, []);
-
-  const colorMap = {
+useEffect(()=>{
+  if(classFilter!= undefined){
+    setSelectedFilters(classFilter)
+  }
+},[])
+const colorMap = {
     K: "#4defd6",
     1: "#FFABAB",
     2: "#FFC3A0",

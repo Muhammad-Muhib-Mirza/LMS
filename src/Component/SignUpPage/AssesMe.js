@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import style from "../../SignUp.module.css"; // Assuming you have a CSS file for styles
-import style2 from "../../AssesMe.module.css";
+import style from "../../Style/SignUp.module.css";
+import style2 from "../../Style/AssesMe.module.css";
 import { Button } from "@chakra-ui/react";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";

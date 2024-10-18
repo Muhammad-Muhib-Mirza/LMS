@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import style from "../../Filter.module.css";
+import style from "../../Style/Filter.module.css";
 import { useParams } from "react-router-dom";
 
-export default function IndustryFilter({ handleFilterChange,reset }) {
+export default function IndustryFilter({ handleFilterChange,reset,roleFilter }) {
   const { typeName } = useParams(); // Get the search query from the URL
   const subjects = [
     "Market Research",
@@ -30,6 +30,13 @@ export default function IndustryFilter({ handleFilterChange,reset }) {
       setSelectedFilters([])
     }
   },[reset])
+
+  useEffect(()=>{
+    if(roleFilter!= undefined){
+      setSelectedFilters(roleFilter)
+    }
+  },[])
+
   useEffect(()=>{
     if (typeName) {
       if(subjects.includes(typeName)){

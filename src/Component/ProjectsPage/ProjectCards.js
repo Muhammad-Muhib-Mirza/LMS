@@ -1,8 +1,20 @@
-import { useState } from "react";
-import style from "../../Cards.module.css";
-import TestFilter from "./FilterContainer"
+import { useState,useEffect } from "react";
+import style from "../../Style/Cards.module.css";
+import FilterContainer from "./FilterContainer"
+import { useLocation, useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function ProjectCards() {
+  const param = useParams();
+  const searchValue = param.typeName;
+  const location = useLocation();
+  // useEffect(()=>{
+  //   axios.get("").then((result)=>{
+  //     console.log(result)
+  //   }).catch((err)=>{
+  //     console.log(err)
+  //   })
+  // },[])
   let data = [
     {
       image: "/Card-Images/1727524311985.jpg",
@@ -67,6 +79,13 @@ export default function ProjectCards() {
       industry: ["Health Care", "Technology"],
     },
   ];
+  
+  if(searchValue != undefined && !searchValue.includes('browse') && searchValue != "" ){
+    
+    data = data.filter((item)=>{
+      return item.class.includes(searchValue) || item.industry.includes(searchValue) || item.role.includes(searchValue) || item.subject.includes(searchValue)
+    })
+  }
   const [allData, setAllData] = useState(data);
   const [cardData, setCardData] = useState(data);
   const [subjectfilter, setSubjectFilter] = useState([]);
@@ -75,7 +94,6 @@ export default function ProjectCards() {
   const [classFilter, setClassFilter] = useState([]);
   const handleFilterChange = (filterValue, filterFrom) => {
     if (filterFrom == "Class") {
-      console.log("Filter Called")
       setClassFilter((prevFilters) => {
         // Manage all the filter conditions
         const updatedFilters = prevFilters.includes(filterValue)
@@ -242,8 +260,11 @@ export default function ProjectCards() {
     <div className={style.container}>
       
     <div className={style.filterContainer} >
-    <TestFilter handleFilterChange={handleFilterChange} handleClearFilter={handleClearFilter} />
-    <div className={style.AssesMe} onClick={()=>window.location.href='/assesme'} >Asses Me</div>
+    <FilterContainer handleFilterChange={handleFilterChange} handleClearFilter={handleClearFilter} classFilter={classFilter} roleFilter={roleFilter} subjectFilter={subjectfilter} industryFilter={industryFilter} />
+    {
+      location.pathname.includes("type") ? "" : <div className={style.AssesMe} onClick={()=>window.location.href='/assesme'} >Asses Me</div>
+    }
+    
     </div>
       
       <div

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import style from '../../FilterContainer.module.css'
+import style from '../../Style/FilterContainer.module.css'
 import Filter from "./ClassFilter";
 import SubjectFilter from "./SubjectFilter";
 import IndustryFilter from "./IndustryFilter";
@@ -22,7 +22,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
+const FilterModal = ({ handleFilterChange, handleClearFilter,classFilter,subjectFilter,roleFilter,industryFilter }) => {
   const { isOpen, onOpen, onClose } = useDisclosure() // From Chakra Ui
   const [classDiv, setClassDiv] = useState(false);
   const [subjectDiv, setSubjectDiv] = useState(false);
@@ -213,7 +213,7 @@ const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
             ease: "easeInOut",
           }}
         >
-          <Filter handleFilterChange={handleFilterChange} reset={reset} />
+          <Filter handleFilterChange={handleFilterChange} reset={reset} classFilter={classFilter} />
         </motion.div>
 
         <Text
@@ -237,7 +237,7 @@ const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
             ease: "easeInOut",
           }}
         >
-          <SubjectFilter handleFilterChange={handleFilterChange} reset={reset} />
+          <SubjectFilter handleFilterChange={handleFilterChange} reset={reset} subjectFilter={subjectFilter} />
         </motion.div>
 
         <Text
@@ -261,7 +261,7 @@ const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
             ease: "easeInOut",
           }}
         >
-          <IndustryFilter handleFilterChange={handleFilterChange} reset={reset} />
+          <IndustryFilter handleFilterChange={handleFilterChange} reset={reset} industryFilter={industryFilter} />
         </motion.div>
 
         <Text
@@ -287,7 +287,7 @@ const FilterModal = ({ handleFilterChange, handleClearFilter }) => {
             ease: "easeInOut",
           }}
         >
-          <RoleFilter handleFilterChange={handleFilterChange} reset={reset} />
+          <RoleFilter handleFilterChange={handleFilterChange} reset={reset} roleFilter={roleFilter} />
         </motion.div>
       </Flex>
     </Box>

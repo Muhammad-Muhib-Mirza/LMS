@@ -1,5 +1,5 @@
-import style from "../SignIN.module.css";
-import styleLoader from "../loader.module.css";
+import style from "../Style/SignIN.module.css";
+import styleLoader from "../Style/loader.module.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ToastContainer, toast } from "react-toastify";

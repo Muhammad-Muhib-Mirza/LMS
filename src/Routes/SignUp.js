@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import style from '../SignUp.module.css'; // Assuming you have a CSS file for styles
+import style from '../Style/SignUp.module.css'; 
 import { AnimatePresence } from 'framer-motion';
 import FormSubmition from '../Component/FormSubmition'
 import AssesMe from '../Component/SignUpPage/AssesMe';

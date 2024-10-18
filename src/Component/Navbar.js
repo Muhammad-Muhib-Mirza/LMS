@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import style from "../Navbar.module.css";
+import style from "../Style/Navbar.module.css";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -13,21 +13,7 @@ export default function Navbar() {
     }
   };
   const handleSearch = () => {
-    if (searchQuery.trim() === "") {
-      return; // Prevent empty searches
-    }
-  
-    // Check if the current page includes "/type"
-    if (window.location.pathname.includes("/type")) {
-      // Dispatch the search event if already on the "/type" page
-      const searchEvent = new CustomEvent("searchQueryEvent", {
-        detail: searchQuery,
-      });
-      window.dispatchEvent(searchEvent); // Dispatch the custom event with the search query
-    } else {
-      // Navigate to the "/type" page and pass searchValue via state
-      navigate("/type/browselesson", { state: { searchValue: searchQuery } });
-    }
+    navigate(`/type/${searchQuery}`)
   };
   
   
