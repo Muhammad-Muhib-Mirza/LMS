@@ -42,7 +42,7 @@ const Signin = () => {
       Password: user.password,
     };
     axios
-      .post("http://157.90.95.45:97/api/admin/login", obj, {
+      .post("https://157.90.95.45:97/api/admin/login", obj, {
         headers: {
           "Content-Type": "application/json",
         },

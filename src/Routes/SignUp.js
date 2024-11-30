@@ -99,7 +99,7 @@ function SignUpForm() {
     };
 
     axios
-      .post("http://157.90.95.45:97/api/admin/AddUser", Obj, {
+      .post("https://157.90.95.45:97/api/admin/AddUser", Obj, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -121,7 +121,7 @@ function SignUpForm() {
               Code: Code,
             };
             axios
-              .post("http://157.90.95.45:97/api/admin/AddAssesment", Obj, {
+              .post("https://157.90.95.45:97/api/admin/AddAssesment", Obj, {
                 headers: {
                   "Content-Type": "application/json",
                 },

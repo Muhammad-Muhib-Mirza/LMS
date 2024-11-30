@@ -9,9 +9,9 @@ export default function Home() {
   const dispatch = useDispatch();
   useEffect(() => {
     axios
-      .post("http://157.90.95.45:97/api/Project/Project")
+      .post("https://157.90.95.45:97/api/Project/Project")
       .then((result) => {
-        dispatch(setAllCardData(result.data.dataObject))
+        dispatch(setAllCardData(result.data.dataObject));
       })
       .catch((err) => {
         console.log(err);

@@ -43,13 +43,15 @@ const FilterModal = ({
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
-    axios.get("http://157.90.95.45:97/api/Project/GetFilter").then((result) => {
-      const data = result.data;
-      setRoles(data.dataObject.lstRoleFilter);
-      setSubjects(data.dataObject.lstSubjectFilter);
-      setIndustry(data.dataObject.lstIndustryFilter);
-      setGrades(data.dataObject.lstGradeFilter);
-    });
+    axios
+      .get("https://157.90.95.45:97/api/Project/GetFilter")
+      .then((result) => {
+        const data = result.data;
+        setRoles(data.dataObject.lstRoleFilter);
+        setSubjects(data.dataObject.lstSubjectFilter);
+        setIndustry(data.dataObject.lstIndustryFilter);
+        setGrades(data.dataObject.lstGradeFilter);
+      });
   }, []);
 
   const clearAllFilter = () => {

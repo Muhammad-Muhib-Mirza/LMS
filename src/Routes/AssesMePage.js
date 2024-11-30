@@ -30,7 +30,7 @@ export default function AssesMePage() {
         Code: Code,
       };
       axios
-        .post("http://157.90.95.45:97/api/admin/AddAssesment", Obj, {
+        .post("https://157.90.95.45:97/api/admin/AddAssesment", Obj, {
           headers: {
             "Content-Type": "application/json",
           },
