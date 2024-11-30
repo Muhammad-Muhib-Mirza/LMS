@@ -60,7 +60,7 @@ export default function Navbar() {
           {
             localStorage.UserId != undefined && localStorage.UserId != "" ? <>
             {
-              localStorage.isAssesed ? <>
+              localStorage.isAssesed == 'true' ? <>
               <button
             className={`btn btn-outline-success ${style.formBtn} ${style.btnproject}`}
             style={{
