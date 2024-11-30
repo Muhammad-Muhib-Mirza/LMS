@@ -1,27 +1,13 @@
 import { useState, useEffect,useRef } from "react";
 import { motion } from "framer-motion";
 import style from "../../Style/Filter.module.css";
-import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
-export default function Filter({ handleFilterChange,reset,classFilter }) {
-  const { typeName } = useParams(); // Get the search query from the URL
-  const location = useLocation();
-  const classes = [
-    "K",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-  ];
+
+export default function Filter({ handleFilterChange,reset,classFilter,data=[] }) {
+  const initialColorMap = {};
+  
+  const classes = data;
+  const [colorMap, setColorMap] = useState(initialColorMap);
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -36,21 +22,27 @@ useEffect(()=>{
     setSelectedFilters(classFilter)
   }
 },[])
-const colorMap = {
-    K: "#4defd6",
-    1: "#FFABAB",
-    2: "#FFC3A0",
-    3: "#FF677D",
-    4: "#D4A5A5",
-    5: "#392F5A",
-    6: "#31A2AC",
-    7: "#61C0BF",
-    8: "#6B4226",
-    9: "#D9BF77",
-    10: "#ACD8AA",
-    11: "#FFD31D",
-    12: "#42d7d2",
-  };
+
+// Function to generate a random color
+const generateRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+useEffect(() => {
+  // Ensure all subjects have a color, even if they are not predefined
+  const updatedColorMap = { ...initialColorMap };
+  classes.forEach((subject) => {
+    if (!updatedColorMap[subject]) {
+      updatedColorMap[subject] = generateRandomColor();
+    }
+  });
+  setColorMap(updatedColorMap);
+}, [classes]);
 
   const handleItemClick = (filterValue) => {
     handleFilterChange(filterValue, "Class");
@@ -90,7 +82,7 @@ const colorMap = {
         {classes.map((filterValue) => (
           <motion.div
             key={filterValue}
-            className={style.filterBox}
+            className={`${style.filterBox} ${style.roleBox}`}
             style={{
               backgroundColor: selectedFilters.includes(filterValue)
                 ? colorMap[filterValue]

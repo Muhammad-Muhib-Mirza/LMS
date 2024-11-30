@@ -57,7 +57,43 @@ export default function Navbar() {
             }}
             onKeyDown={handleKeyDown}
           />
-          <button
+          {
+            localStorage.UserId != undefined && localStorage.UserId != "" ? <>
+            {
+              localStorage.isAssesed ? <>
+              <button
+            className={`btn btn-outline-success ${style.formBtn} ${style.btnproject}`}
+            style={{
+              backgroundColor: "#E67500",
+              color: "whitesmoke",
+              marginRight: "0.5rem",
+            }}
+            onClick={(e)=>{
+              e.preventDefault()
+              window.location.href = "/assesme"
+            }}
+          >
+            Personalized Project
+          </button>
+              </> : <>
+              <button
+            className={`btn btn-outline-success ${style.formBtn}`}
+            style={{
+              backgroundColor: "#E67500",
+              color: "whitesmoke",
+              marginRight: "0.5rem",
+            }}
+            onClick={(e)=>{
+              e.preventDefault()
+              window.location.href = "/assesme"
+            }}
+          >
+            Asses Me
+          </button>
+              </>
+            }
+            </> : <>
+            <button
             className={`btn btn-outline-success ${style.formBtn}`}
             style={{
               backgroundColor: "#E67500",
@@ -85,6 +121,8 @@ export default function Navbar() {
           >
             Login
           </button>
+            </>
+          }
         </form>
       </div>
     </nav>

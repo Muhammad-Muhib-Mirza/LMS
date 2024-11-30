@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FiCheckCircle } from 'react-icons/fi';  // Using react-icons for the checkmark
 import { Button } from "@chakra-ui/react";
 
-const SuccessIcon = () => {
+const SuccessIcon = ({message}) => {
   const containerVariants = {
     hidden: { opacity: 0, scale: 0 },
     visible: {
@@ -30,7 +30,7 @@ const SuccessIcon = () => {
       style={{height:'100vh',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center'}}
     >
         <h5>
-            Form Submitted Successfully
+            {message}
         </h5>
       <motion.div
         className="icon-circle"

@@ -16,7 +16,7 @@
 }
 
 .filterBox {
-  background-color: #7B9DD4;
+  background-color: #7b9dd4;
   cursor: pointer;
   margin: 5px;
   border-radius: 8px;
@@ -40,56 +40,62 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.subjectBox{
+.subjectBox {
   width: 6.5rem;
   font-size: 15px;
   height: 2.2rem;
   padding-top: 0.3rem;
 }
 
-.roleBox{
-  width: 6.5rem;
-  font-size: 15px;
-  height: 3.5rem;
+.roleBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  height: 5rem;
+  border-radius: 8px;
+  text-align: center;
+  overflow-wrap: break-word;
+  width: 6rem;
 }
 
-.subjectContainer{
+.subjectContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 100%;
-  margin:auto;
-  height:137px;
-  overflow-y:auto;
+  margin: auto;
+  height: 191px;
+  overflow-y: auto;
 }
 
-.roleContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width:100%;
-    margin:auto;
-    height:200px;
-    overflow-y: auto
+.roleContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  margin: auto;
+  height: 200px;
+  overflow-y: auto;
 }
 
-.classContainer{
+.classContainer {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin: auto;
-  height: 168px;
-  overflow-Y: auto;
+  height: 191px;
+  overflow-y: auto;
 }
 
-@media screen and (max-width:800px) {
-  .subjectContainer{
+@media screen and (max-width: 800px) {
+  .subjectContainer {
     width: 80%;
   }
-  .roleContainer{
+  .roleContainer {
     width: 80%;
   }
-  .classContainer{
+  .classContainer {
     width: 80%;
   }
 }

@@ -37,17 +37,31 @@ const Signin = () => {
   const handleSubmit = (e) => {
     setLoader(false);
     e.preventDefault();
-    axios.post("http://localhost:4001/login", user).then((result) => {
-      if (result.data.data == "Error") {
-        toast.error("Please Enter Correct Credential");
-        setLoader(true);
-      } else {
-        localStorage.setItem("email", user.email);
-        localStorage.setItem("status", result.data.status);
-        setLoader(true);
-        toast.success("LogIn Success");
-      }
-    });
+    const obj = {
+      EmailId: user.email,
+      Password: user.password,
+    };
+    axios
+      .post("http://157.90.95.45:97/api/admin/login", obj, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((result) => {
+        console.log(result);
+        if (result.data.message != "Login is successfull.") {
+          toast.error("Please Enter Correct Credential");
+          setLoader(true);
+        } else {
+          localStorage.setItem("isAssesed", result.data.dataObject.isAssesed);
+          localStorage.setItem("UserId", result.data.dataObject.userId);
+          setLoader(true);
+          toast.success("LogIn Success");
+          setTimeout(() => {
+            location.href = "/";
+          }, 1000);
+        }
+      });
   };
   const handleButton = () => {
     if (email.test(user.email) == false || user.password === "") {
@@ -82,7 +96,7 @@ const Signin = () => {
       <div className={style.container}>
         <form onSubmit={handleSubmit} className={style.form}>
           <div className={style.logo}>
-            <img src="/Login/logo.png" alt="" className={style.logoimage} />
+            <FaUser style={{ width: "2rem", height: "2rem" }} />
           </div>
           <h1 className={style.heading}>Log In</h1>
           <div className={style.inptContainer}>
@@ -124,7 +138,7 @@ const Signin = () => {
                   duration: 0.2,
                 }}
               >
-                <FaUser style={{ marginLeft:'0.2rem' }} />
+                <FaUser style={{ marginLeft: "0.2rem" }} />
               </motion.span>
               <input
                 type="email"
@@ -165,7 +179,8 @@ const Signin = () => {
                 duration: 0.2,
               }}
             >
-              <motion.span className={style.image}
+              <motion.span
+                className={style.image}
                 initial={{
                   bottom: "0.5rem",
                 }}
@@ -181,8 +196,9 @@ const Signin = () => {
                 transition={{
                   type: "tween",
                   duration: 0.2,
-                }} >
-              <RiLockPasswordFill style={{ marginLeft:'0.1rem' }} />
+                }}
+              >
+                <RiLockPasswordFill style={{ marginLeft: "0.1rem" }} />
               </motion.span>
               <input
                 type="password"

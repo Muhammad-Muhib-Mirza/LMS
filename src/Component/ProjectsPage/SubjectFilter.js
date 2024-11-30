@@ -3,21 +3,37 @@ import { motion } from "framer-motion";
 import style from "../../Style/Filter.module.css";
 import { useParams } from "react-router-dom";
 
-export default function SubjectFilter({ handleFilterChange,reset,subjectFilter }) {
+export default function SubjectFilter({ handleFilterChange,reset,subjectFilter,data }) {
   const { typeName } = useParams(); // Get the search query from the URL
-  const subjects = ['Math', 'Ela', 'Social Studies', 'Science','Physics'];
+  const subjects = data;
 
-  const colorMap = {
-    "Math": "#FFABAB",
-    "Ela": "#FF677D",
-    "Social Studies": "#6B4226",
-    "Science": "#392F5A",
-    "Physics" : "#DB2064"
-  };
+  const initialColorMap = {};
+  const [colorMap, setColorMap] = useState(initialColorMap);
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
+
+    // Function to generate a random color
+const generateRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+useEffect(() => {
+  // Ensure all subjects have a color, even if they are not predefined
+  const updatedColorMap = { ...initialColorMap };
+  subjects.forEach((subject) => {
+    if (!updatedColorMap[subject]) {
+      updatedColorMap[subject] = generateRandomColor();
+    }
+  });
+  setColorMap(updatedColorMap);
+}, [subjects]);
   useEffect(()=>{
     if(reset){
       setSelectedFilters([])
@@ -87,7 +103,7 @@ export default function SubjectFilter({ handleFilterChange,reset,subjectFilter }
                   {subjects.map((subject) => (
                     <motion.div
                       key={subject}
-                      className={`${style.filterBox} ${style.subjectBox}`}
+                      className={`${style.filterBox} ${style.roleBox}`}
                       style={{
                         backgroundColor: selectedFilters.includes(subject)
                           ? colorMap[subject]

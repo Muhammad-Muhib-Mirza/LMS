@@ -2,72 +2,49 @@ import { useState,useEffect } from "react";
 import Week from "../Component/DetailPage/Week";
 import style from "../Style/Detail.module.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function detail() {
-  // const [data,setData] = useState();
-  // useEffect(()=>{
-  //   axios.get("").then((result)=>{
-  //     console.log(result)
-  //   }).catch((err)=>{
-  //     console.log(err)
-  //   })
-  // },[])
-  let data = [
-    {
-      image: "/Card-Images/1727524311985.jpg",
-      class: ["1", "2", "3", "4"],
-      subject: ["Math", "Sci", "S.S"],
-    },
-    {
-      image: "/Card-Images/1727524388090.jpg",
-      class: ["1", "2"],
-      subject: ["Math", "Sci"],
-    },
-    {
-      image: "/Card-Images/1727524599284.jpg",
-      class: ["2", "3"],
-      subject: ["Math"],
-    },
-    {
-      image: "/Card-Images/1727524696934.jpg",
-      class: ["1"],
-      subject: ["Math", "S.S"],
-    },
-    {
-      image: "/Card-Images/1727524761887.jpg",
-      class: ["1", "2"],
-      subject: ["Math"],
-    },
-    {
-      image: "/Card-Images/1727524857552.jpg",
-      class: ["1"],
-      subject: ["Math", "S.S"],
-    },
-    {
-      image: "/Card-Images/1727524983003.jpg",
-      class: ["1", "2", "3", "4"],
-      subject: ["S.S"],
-    },
-    {
-      image: "/Card-Images/1727525069461.jpg",
-      class: ["K", "1", "2", "3"],
-      subject: ["Math"],
-    },
-  ];
-  
-  const [cardData, setCardData] = useState(data);
+  const [detail,setDetail] = useState();
+  const param = useParams();
+  useEffect(()=>{
+    axios.post("http://157.90.95.45:97/api/Project/GetProjectDetail",{Id:param.id}).then((result)=>{
+      setDetail(result.data.dataObject[0])
+      console.log(result.data.dataObject[0])
+    }).catch((err)=>{
+      console.log(err)
+    })
+  },[])
   return (
     <>
+    {
+      detail != undefined ? <>
       <div
         className={style.container}
       >
         <div className={style.imageContainer}>
           <img
-            src="/Card-Images/criticalthinking.png"
+            src={`${detail.projectImagesList[0].image }`}
             alt=""
             style={{ width: "20rem" }}
           />
-          <div className={style.tagContainer} >Math</div>
+          <div className={style.tagContainer} >
+            <h6>Standards Target:</h6>
+            <div style={{width:'60%',display:'flex',flexWrap:'wrap',gap:'0.5rem'}}>
+            {
+              
+              detail.projectSubject == undefined ? null : detail.projectSubject.map((item)=>{
+                return(
+                  <span style={{padding:'0.2rem',backgroundColor:'#dad3d3',borderRadius:'6px',marginTop:'0.3rem'}}>
+                    {
+                      item.subject_name
+                    }
+                    </span>
+                )
+              })
+            }
+            </div>
+          </div>
         </div>
         <div
           style={{
@@ -77,7 +54,11 @@ export default function detail() {
           }}
         >
           <div>
-            <h3>Title</h3>
+            <h3>
+              {
+                detail.projectName.toUpperCase()
+              }
+            </h3>
             <hr />
           </div>
           <div
@@ -87,36 +68,75 @@ export default function detail() {
               <div style={{ width: "5.5rem", fontWeight: "bold" }}>
                 Industry :
               </div>{" "}
-              <div> Checmical </div>
+              <div>{ 
+  detail.projectIndustry.map((item, index) => {
+    const isLastItem = index === detail.projectIndustry.length - 1;
+    return (
+      <span key={index}>
+        {item.industry_name}
+        {!isLastItem && <span>, </span>}
+      </span>
+    );
+  })
+}
+</div>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ width: "5.5rem", fontWeight: "bold" }}>
                 Grades :
               </div>{" "}
-              <div> 3 2 1 </div>
+              <div> { 
+  detail.projectGrades.map((item, index) => {
+    const isLastItem = index === detail.projectGrades.length - 1;
+    return (
+      <span key={index}>
+        {item.grade_name}
+        {!isLastItem && <span>, </span>}
+      </span>
+    );
+  })
+}</div>
             </div>
             <div style={{ display: "flex" }}>
               <div style={{ width: "5.5rem", fontWeight: "bold" }}>
-                Duration :
+                Roles :
               </div>{" "}
-              <div> 3-4 days </div>
+              <div> { 
+  detail.projectRole.map((item, index) => {
+    const isLastItem = index === detail.projectRole.length - 1;
+    return (
+      <span key={index}>
+        {item.role_name}
+        {!isLastItem && <span>, </span>}
+      </span>
+    );
+  })
+}</div>
             </div>
             <hr />
           </div>
           <h3>Objectives</h3>
           <div className={style.headObjective}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            soluta beatae unde, pariatur expedita, sed dolorem in eveniet fuga
-            similique, eius libero! Quas nobis et laudantium iure maxime nihil
-            autem?Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatibus laboriosam ullam minima tenetur! Quis rem nisi officia
-            qui placeat eveniet delectus mollitia debitis dicta illum sit,
-            numquam vitae suscipit necessitatibus!Lorem
+            {
+              detail.projectDescription
+            }
           </div>
           <hr />
         </div>
       </div>
-      <Week />
+      <Week data={detail.projectWeek} />
+      </> : <div className={style.loader}>
+    <div className={style.circle}></div>
+    <div className={style.dots}>
+        <div className={style.dot}></div>
+        <div className={style.dot}></div>
+        <div className={style.dot}></div>
+    </div>
+</div>
+    }
+      {
+        console.log(detail)
+      }
     </>
   );
 }

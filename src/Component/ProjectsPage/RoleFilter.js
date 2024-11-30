@@ -3,24 +3,32 @@ import { motion } from "framer-motion";
 import style from "../../Style/Filter.module.css";
 import { useParams } from "react-router-dom";
 
-export default function IndustryFilter({ handleFilterChange,reset,roleFilter }) {
+export default function IndustryFilter({ handleFilterChange,reset,roleFilter,data }) {
   const { typeName } = useParams(); // Get the search query from the URL
-  const subjects = [
-    "Market Research",
-    "Business Analysis",
-    "Solution Designs",
-    "Solution Development",
-    "Marketing & Sales",
-  ];
+  const subjects = data
+  const initialColorMap = {};
+  const [colorMap, setColorMap] = useState(initialColorMap);
 
-  // Updated color map for roles
-  const colorMap = {
-    "Market Research": "#FFABAB",
-    "Business Analysis": "#FF677D",
-    "Solution Design": "#6B4226",
-    "Solution Development": "#392F5A",
-    "Marketing & Sales": "#61C0BF",
-  };
+  // Function to generate a random color
+const generateRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+useEffect(() => {
+  // Ensure all subjects have a color, even if they are not predefined
+  const updatedColorMap = { ...initialColorMap };
+  subjects.forEach((subject) => {
+    if (!updatedColorMap[subject]) {
+      updatedColorMap[subject] = generateRandomColor();
+    }
+  });
+  setColorMap(updatedColorMap);
+}, [subjects]);
 
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpen, setIsOpen] = useState(false);

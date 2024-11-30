@@ -10,6 +10,7 @@ export default function AssesMe({
   formData,
   setShowAssesmentForm,
   setSuccessSubmit,
+  handleSubmit
 }) {
   const location = useLocation();
   const [loading, setLoading] = useState(false);
@@ -39,6 +40,7 @@ export default function AssesMe({
           onClick={() => {
             setShowAssesmentForm(false);
             setSuccessSubmit(true);
+            handleSubmit();
           }}
         >
           Skip
@@ -415,6 +417,7 @@ export default function AssesMe({
           setShowAssesmentForm(false);
           setSuccessSubmit(true);
           setLoading(true);
+          handleSubmit();
         }}
         style={{
           padding: "0.8rem 2rem",
