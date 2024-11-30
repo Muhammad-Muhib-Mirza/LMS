@@ -5,27 +5,27 @@ import { motion } from "framer-motion";
 export default function MidComponent() {
   const data = [
     {
-      image: "/RoundImages/option1.jpeg",
+      image: "/RoundImages/option1.jpg",
       title: "Career Counseling",
       desc: "AI-driven career counseling aligns students' strengths.",
     },
     {
-      image: "/RoundImages/option2.jpeg",
+      image: "/RoundImages/option2.jpg",
       title: "Personalized Learning Paths",
       desc: "Personalized AI learning paths adapt to students strengths and pace.",
     },
     {
-      image: "/RoundImages/option3.jpeg",
+      image: "/RoundImages/option3.jpg",
       title: "Preparing for Future AI Roles",
       desc: "Our Curriculum prepares students for exciting AI opportunities.",
     },
     {
-      image: "/RoundImages/option4.jpeg",
+      image: "/RoundImages/option4.jpg",
       title: "Real-Life Learning Projects",
       desc: "Hands-on projects bridge gap between theory.",
     },
     {
-      image: "/RoundImages/option5.jpeg",
+      image: "/RoundImages/option5.jpg",
       title: "Solve Industry Problems",
       desc: "Developing career readiness through industry driven projects.",
     }
